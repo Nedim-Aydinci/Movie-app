@@ -1,0 +1,38 @@
+.footer {
+    margin-top: auto;
+    background-color: #2B2833;
+    color: white;
+    padding: 0rem 2rem;
+}
+
+.footer-left h2 {
+    font-size: 2rem;
+}
+
+.footer-middle {
+    display: flex;
+    gap: 5rem;
+}
+
+
+.footer-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-icons:hover {
+    cursor: pointer;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-trademark {
+    font-size: small;
+    color: #717171;
+    display: flex;
+    justify-content: end;
+}
