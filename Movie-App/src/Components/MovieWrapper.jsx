@@ -1,10 +1,10 @@
 import MovieCard from "./MovieCard";
 
-export default function MovieWrapper({}) {
+export default function MovieWrapper({movies}) {
 
     return(
         <section className="movie-wrapper">
-            movie.ma
+            {movies.map((movie) => (<MovieCard key={movie.id} movie={movie} />))}
         </section>
     )
 }
