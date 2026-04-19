@@ -1,4 +1,31 @@
+import { useEffect, useState } from "react";
+import { fetchAllMovies } from "../Api/FilterApi.js";
+
 function MovieFilter() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [sortBy, setSortBy] = useState("");
+
+  //Hämta data via api
+  useEffect(() => {
+    fetchAllMovies()
+    .then((data) => {
+      setMovies(data);
+    })
+    .catch(() => {
+      setError("Failed to load movies.");
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  }, []);
+
+  //Early return
+  if(loading) return <p>Loading...</p>;
+  if(error) return <p>{error}</p>;
+
+  
   return (
     <>
     <div className="movie-filter-container">
