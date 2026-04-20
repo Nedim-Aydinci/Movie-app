@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllMovies } from "../Api/Api.js";
+import "./MovieFilter.css";
+
 //Glöm inte att importea MovieCard-komponenten
 
 function MovieFilter() {
@@ -26,7 +28,7 @@ function MovieFilter() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  //Sortera listan
+  //Uppdatera listan efter vald sortering/filtrering
   const sortedMovies = [...movies].sort((a, b) => {
     if (sortBy === "title") {
       return a.original_title.localeCompare(b.original_title);
