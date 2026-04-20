@@ -1,7 +1,18 @@
 import { FaHeart, FaUser } from "react-icons/fa"
 import "./Navbar.css"
+import { useState } from "react";
 
-function Navbar() {
+function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
+    //När användaren söker skickas query-värdet upp till App.jsx via onSearch-propen
+
+    const [query, setQuery] = useState("") //Börja med tom sträng
+    
+    const handleSearch = (e) => {
+        if (e.key === "Enter") { //Om användaren trycker på enter så skickar onSearch(query), alltså det användaren har skrivit
+            onSearch(query)
+        }
+    }
+
     return (
         <>
             <nav className="navbar">
@@ -9,8 +20,13 @@ function Navbar() {
 
                     <h1 className="logo">Movie Library</h1>
 
-                    <input className="search-bar" placeholder="Search for movies..."></input>
-
+                    <input className="search-bar" 
+                    placeholder="Search for movies..."
+                    value={query} //Kontrollera vad som visas i fältet
+                    onChange={(e) => setQuery(e.target.value)} //Uppdatera query vid varje knapptryckning
+                    onKeyDown={handleSearch} //På varje knapptryckning körs handleSearch funktionen 
+                    />
+                    
                     <div className="nav-icons">
                         <button id="myList-btn">My List</button>
                         <FaHeart />

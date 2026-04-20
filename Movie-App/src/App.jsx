@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar onSearch={}/> //Funktion för API-anrop sätts in här
 
     </>
   )
