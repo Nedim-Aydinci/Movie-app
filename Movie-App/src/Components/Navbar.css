@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+}
+
+.navbar{
+    background-color: #2B2833;
+    color: white;
+    padding: 2rem 2rem;
+}
+
+.nav-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-icons{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#myList-btn{
+    padding: 5px 15px;
+    border-radius: 6px;
+    background-color: #FFB043;
+}
+ 
+.search-bar{
+    margin-left: auto;
+    margin-right: 2rem;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
