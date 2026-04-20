@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchAllMovies } from "../Api/FilterApi.js";
+import { fetchAllMovies } from "../Api/Api.js";
 
 function MovieFilter() {
   const [movies, setMovies] = useState([]);
