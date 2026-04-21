@@ -15,6 +15,10 @@ const App = () => {
   return (
     <>
       <div>App</div>
+
+      {currentMovies.map((movie) => (
+        <p key={movie.id}>{movie.original_title}</p>
+      ))}
       <Pagination currentPage={currentPage} setCurrentpage={setCurrentpage} />
     </>
   );
