@@ -18,7 +18,7 @@ function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas
             <nav className="navbar">
                 <div className="nav-container">
 
-                    <h1 className="logo">Movie Library</h1>
+                    <h1 className="logo">Movie <br/>Library</h1>
 
                     <input className="search-bar" 
                     placeholder="Search for movies..."

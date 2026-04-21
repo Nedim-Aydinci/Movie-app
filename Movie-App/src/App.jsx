@@ -8,10 +8,12 @@ function App() {
 
   return (
     <>
-      <Navbar onSearch={}/> //Funktion för API-anrop sätts in här
+      
 
+      <Navbar/>
+      
     </>
   )
 }
 
-export default App
+export default App;
