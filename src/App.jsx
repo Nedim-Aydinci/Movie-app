@@ -32,7 +32,6 @@ function App() {
   return (
     <>
       <MovieWrapper movies={movies} />
-      <RandomBtn movie={movies} />
     </>
   );
 }

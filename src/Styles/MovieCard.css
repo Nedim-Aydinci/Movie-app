@@ -87,10 +87,28 @@
 
 .movie-title {
     margin: 0;
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     
+}
+
+@media (max-width: 480px) {
+    .movie-rating-badge {
+        top: 5px;
+        right: 5px;
+        padding: 2px 6px;
+        font-size: 0.75rem;
+    }
+    
+    .movie-favorite {
+        top: 5px;
+        left: 5px;
+    }
+
+    .movie-content {
+        padding: 8px; 
+    }
 }
