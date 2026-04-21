@@ -27,7 +27,11 @@ const Pagination = ({
         Prev
       </button>
       {pages.map((page) => (
-        <button key={page} onClick={() => setCurrentPage(page)}>
+        <button
+          key={page}
+          className={currentPage === page ? "active" : ""}
+          onClick={() => setCurrentPage(page)}
+        >
           {page}
         </button>
       ))}
