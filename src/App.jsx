@@ -8,7 +8,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch("https://jsonfakery.com/movies/infinite-scroll")
+    fetch("https://jsonfakery.com/movies/paginated")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
