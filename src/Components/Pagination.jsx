@@ -1,13 +1,14 @@
 import React from "react";
+import { useState } from "react";
 
 const Pagination = () => {
+  //using state to select pages. 1 is the start, default value.
+  const [currentPage, setCurrentpage] = useState(1);
   return (
     <div>
-      <button>Prev</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>Next</button>
+      <button onClick={() => setCurrentpage(currentPage - 1)}>Prev</button>
+      <button>{currentPage}</button>
+      <button onClick={() => setCurrentpage(currentPage + 1)}>Next</button>
     </div>
   );
 };
