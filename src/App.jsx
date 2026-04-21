@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import { useState, useEffect } from "react";
 import Pagination from "./Components/Pagination";
 
 const App = () => {
@@ -10,7 +10,10 @@ const App = () => {
   useEffect(() => {
     fetch("https://jsonfakery.com/movies/infinite-scroll")
       .then((res) => res.json())
-      .then((data) => setMovies(data));
+      .then((data) => {
+        console.log(data);
+        setMovies(data.data); // <-- önemli
+      });
   }, []); //empty array to prevent default rendering
 
   //arranging the page display by moviecard per page
@@ -29,7 +32,12 @@ const App = () => {
       {currentMovies.map((movie) => (
         <p key={movie.id}>{movie.original_title}</p>
       ))}
-      <Pagination currentPage={currentPage} setCurrentpage={setCurrentpage} />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalMovies={movies.length}
+        moviesPerPage={moviesPerPage}
+      />
     </>
   );
 };
