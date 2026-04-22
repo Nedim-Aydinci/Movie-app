@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MovieWrapper from "./Components/MovieWrapper";
+import MovieFilter from "./Components/MovieFilter";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <>
+      <MovieFilter />
       <MovieWrapper movies={movies} />
     </>
   );
