@@ -2,40 +2,61 @@ import React from "react";
 import { useState } from "react";
 import "./Pagination.css";
 
+//display amount of page buttons
+const WINDOW_SIZE = 10;
+
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
-  //using state to select pages. 1 is the start, default value.
-  //const [currentPage, setCurrentpage] = useState(1);
+  const getPageNumbers = () => {
+    //window calculation
+    let start = currentPage - Math.floor(WINDOW_SIZE / 2);
+    let end = start + WINDOW_SIZE - 1;
 
-  const pages = [];
+    //edge/boundery estimation
+    if (start < 1) {
+      start = 1;
+      end = Math.min(WINDOW_SIZE - 1);
+    }
 
-  //"Math.cell rounds up the next integer"
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(1, totalPages - WINDOW_SIZE + 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  };
+
+  const pages = getPageNumbers();
+
+  // for (let i = 1; i <= Math.min(totalPages, 20); i++) {
+  //   pages.push(i);
+  // }
 
   return (
     <div className="pagination">
-      {/* <button
-        onClick={() => setCurrentPage(currentPage - 1)}
+      <button
+        className="pagination-nav"
+        onClick={() => setCurrentPage((p) => p - 1)}
         disabled={currentPage === 1}
       >
         Prev
-      </button> */}
+      </button>
+
       {pages.map((page) => (
         <button
+          className={`pagination-page ${currentPage === page ? "active" : ""}`}
           key={page}
-          className={currentPage === page ? "active" : ""}
           onClick={() => setCurrentPage(page)}
         >
           {page}
         </button>
       ))}
-      {/* <button
-        onClick={() => setCurrentPage(currentPage + 1)}
-        disabled={currentPage === pages.length}
+      <button
+        className="pagination-nav"
+        onClick={() => setCurrentPage((p) => p + 1)}
+        disabled={currentPage === totalPages}
       >
         Next
-      </button> */}
+      </button>
       {/* console.log("setCurrentPage:", setCurrentPage); */}
     </div>
   );
