@@ -6,14 +6,11 @@ import Navbar from './Components/Navbar'
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
-    <>
-      
-
-      <Navbar/>
-      
-    </>
-  )
+    return (
+        <>
+            <Navbar onSearch={testSearch} /> {/*<-- Här sätts API-anropets funktion in*/}
+        </>
+    )
 }
 
 export default App;
