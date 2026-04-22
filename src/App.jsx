@@ -8,6 +8,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   //state lift up due to use state variables in app
   const [currentPage, setCurrentPage] = useState(1);
+  //totalPages implemented after changing api-source
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
@@ -17,23 +18,13 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => {
         //to display less movieCard "slice" implemented to results
-        setMovies(data.results.slice(0, 12)); // <-- change with respect to sourse
+        setMovies(data.results.slice(0, 12)); // <-- change with respect to page layout
         setTotalPages(data.total_pages);
       });
   }, [currentPage]); //page based render
 
-  //arranging the page display by moviecard per page
-  //const moviesPerPage = 12;
-
-  // const lastMovieIndex = currentPage * moviesPerPage;
-  // const firstMovieIndex = lastMovieIndex - moviesPerPage;
-
-  // const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
-
   return (
     <>
-      {/* <div>App</div> */}
-
       {/* movie list */}
       {movies.map((movie) => (
         <p key={movie.id}>{movie.title}</p>
