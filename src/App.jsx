@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
 import Pagination from "./Components/Pagination";
+import MovieCard from "./Components/MovieCard";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -33,10 +34,11 @@ const App = () => {
 
   return (
     <>
-      {/* movie list */}
-      {movies.map((movie) => (
+      {/* movie list is commented out after pull request with moviecard-grid*/}
+      {/* {movies.map((movie) => (
         <p key={movie.id}>{movie.title}</p>
-      ))}
+      ))} */}
+      <MovieWrapper movies={movies} />;
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
