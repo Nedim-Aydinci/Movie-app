@@ -19,7 +19,7 @@ export default function MovieCard({ movie, onClick = undefined }) {
 
   const posterPath = movie.poster_path
     ? `${IMAGE_BASE_URL}${movie.poster_path}`
-    : "https://via.placeholder.com/500x750?text=No+Poster";
+    : "https://placehold.co/500x750?text=No+Poster";
 
   const toggleFavorite = (e) => {
     e.stopPropagation();
