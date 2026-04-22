@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import MovieWrapper from "./Components/MovieWrapper";
 import Pagination from "./Components/Pagination";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
