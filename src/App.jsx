@@ -8,7 +8,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch("https://jsonfakery.com/movies/paginated")
+    fetch("https://jsonfakery.com/movies/simple-paginate")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
