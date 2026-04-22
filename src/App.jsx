@@ -34,10 +34,6 @@ const App = () => {
 
   return (
     <>
-      {/* movie list is commented out after pull request with moviecard-grid*/}
-      {/* {movies.map((movie) => (
-        <p key={movie.id}>{movie.title}</p>
-      ))} */}
       <MovieWrapper movies={movies} />;
       <Pagination
         currentPage={currentPage}
