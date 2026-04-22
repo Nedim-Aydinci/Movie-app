@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Pagination from "./Components/Pagination";
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +13,14 @@ const App = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${currentPage}`,
+      `https://api.themoviedb.org/3/discover/movie?with_original_language=en&page=${currentPage}&sort_by=popularity.desc`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${TMDB_TOKEN}`,
+          accept: "application/json",
+        },
+      },
     )
       .then((res) => res.json())
       .then((data) => {
