@@ -2,12 +2,13 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Pagination from "./Components/Pagination";
 
-const API_KEY = import.meta.env.TMDB_API_KEY;
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   //state lift up due to use state variables in app
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     fetch(
