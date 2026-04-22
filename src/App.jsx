@@ -16,8 +16,8 @@ const App = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        //console.log(data);
-        setMovies(data.results); // <-- change with respect to sourse
+        //to display less movieCard "slice" implemented to results
+        setMovies(data.results.slice(0, 12)); // <-- change with respect to sourse
         setTotalPages(data.total_pages);
       });
   }, [currentPage]); //page based render
