@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchAllMovies } from "../Api/Api.js";
+import { fetchAllMovies } from "../Api/Api_SortFilter.js";
 import "./MovieFilter.css";
 
 //Glöm inte att importea MovieCard-komponenten
@@ -46,11 +46,11 @@ function MovieFilter() {
     <>
       <div className="movie-filter-container">
         <div className="movie-filter-controls">
-          <label className="movie-filter-select">Sort By Filter</label>
+          <label htmlFor="filter-select">Sort By Filter</label>
           <select
             id="filter-select"
-            value={filterBy}
-            onChange={(event) => setFilterBy(event.target.value)}
+            value={sortBy}
+            onChange={(event) => setSortBy(event.target.value)}
           >
             <option value="">Show all movies</option>
             <option value="title">Title</option>
