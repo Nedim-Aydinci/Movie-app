@@ -17,21 +17,24 @@ function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas
         <>
             <nav className="navbar">
                 <div className="nav-container">
-
                     <h1 className="logo">Movie <br/>Library</h1>
 
-                    <input className="search-bar" 
-                    placeholder="Search for movies..."
-                    value={query} //Kontrollera vad som visas i fältet
-                    onChange={(e) => setQuery(e.target.value)} //Uppdatera query vid varje knapptryckning
-                    onKeyDown={handleSearch} //På varje knapptryckning körs handleSearch funktionen 
+                    <div className="nav-right">
+                        <input className="search-bar" 
+                        placeholder="Search for movies..."
+                        value={query} //Kontrollera vad som visas i fältet
+                        onChange={(e) => setQuery(e.target.value)} //Uppdatera query vid varje knapptryckning
+                        onKeyDown={handleSearch} //På varje knapptryckning körs handleSearch funktionen 
                     />
-                    
+
                     <div className="nav-icons">
-                        <button id="myList-btn">My List</button>
                         <FaHeart />
                         <FaUser />
                     </div>
+                    </div>
+                    
+                    
+                    
                 </div>
             </nav>
         </>

@@ -16,38 +16,38 @@
 
 .nav-icons{
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
-#myList-btn{
-    padding: 5px 15px;
-    border-radius: 6px;
-    background-color: #FFB043;
-}
  
-.search-bar{
-    margin-left: auto;
-    margin-right: 2rem;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar {
+    margin-right: 1rem;
     border-radius: 6px;
     padding: 5px 10px;
-    border: none;
 }
 
+
 /*Telefon*/
-
 @media (max-width: 600px) {
-    .nav-container{
+    .nav-container {
         flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
     }
 
-    .search-bar{
+    .nav-right {
+        width: 100%;
+    }
+
+    .search-bar {
         margin: 0;
-        width: 70%;
-    }
-
-    .nav-icons{
-        gap: 1rem;
+        flex: 1;
     }
 }
