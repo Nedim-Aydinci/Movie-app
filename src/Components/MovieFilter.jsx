@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchAllMovies } from "../Api/Api_SortFilter.js";
 import "../Styles/MovieFilter.css";
-
-//Glöm inte att importea MovieCard-komponenten
+import "../Components/MovieCard.jsx";
+import MovieCard from "../Components/MovieCard.jsx";
 
 function MovieFilter() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,7 @@ function MovieFilter() {
   const [sortBy, setSortBy] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
 
-  //Hämta data via api
+  //Get data via api
   useEffect(() => {
     fetchAllMovies()
       .then((data) => {
@@ -29,14 +29,14 @@ function MovieFilter() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  //Filtrerar listan innan val av sortering
+  //Filters the list before choosing sorting
   const sortedMovies = [...movies]
     .filter((movie) => {
       if (filterGenre === "") return true;
       return movie.genre_ids.includes(Number(filterGenre));
     })
 
-    //Sortera resultatet av filtreringen
+    //Sort the result of the filtering
     .sort((a, b) => {
       if (sortBy === "title") {
         return a.original_title.localeCompare(b.original_title);
@@ -54,24 +54,13 @@ function MovieFilter() {
     <>
       <div className="movie-filter-container">
         <div className="movie-filter-controls">
-          <label htmlFor="filter-select">Sort By Filter</label>
-          <select
-            id="filter-select"
-            value={sortBy}
-            onChange={(event) => setSortBy(event.target.value)}
-          >
-            <option value="">Show all movies</option>
-            <option value="title">Title</option>
-            <option value="releaseDate">Release Year</option>
-            <option value="popularity">Rating</option>
-          </select>
-
-          <label htmlFor="genre-select">Choose Your Genre</label>
+          <label htmlFor="genre-select">Sort By</label>
           <select
             id="genre-select"
             value={filterGenre}
             onChange={(event) => setFilterGenre(event.target.value)}
           >
+            {/*value is linked to a genre in the TMDB API.  */}
             <option value="">All Genres</option>
             <option value="28">Action</option>
             <option value="12">Adventure</option>
@@ -82,15 +71,25 @@ function MovieFilter() {
             <option value="878">Science Fiction</option>
             <option value="53">Thriller</option>
           </select>
+
+          <label htmlFor="filter-select">and</label>
+          <select
+            id="filter-select"
+            value={sortBy}
+            onChange={(event) => setSortBy(event.target.value)}
+          >
+            <option value="">Show all movies</option>
+            <option value="title">Title</option>
+            <option value="releaseDate">Release Year</option>
+            <option value="popularity">Rating</option>
+          </select>
         </div>
 
-        {/*Här ska MovieCard komponenten läggas till,
-        exempel-kod:
-        <div className="movie-filter-wrapper">
-          {filteredMovies.map((movie) => (
+        <div className="movie-wrapper">
+          {sortedMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
-        </div>*/}
+        </div>
       </div>
     </>
   );
