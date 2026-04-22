@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Pagination.css";
 
-//display amount of page buttons
+//adjustment of page amount
 const WINDOW_SIZE = 10;
 
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
@@ -26,10 +26,6 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   };
 
   const pages = getPageNumbers();
-
-  // for (let i = 1; i <= Math.min(totalPages, 20); i++) {
-  //   pages.push(i);
-  // }
 
   return (
     <div className="pagination">
@@ -57,7 +53,6 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       >
         Next
       </button>
-      {/* console.log("setCurrentPage:", setCurrentPage); */}
     </div>
   );
 };
