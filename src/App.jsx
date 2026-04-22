@@ -2,41 +2,45 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Pagination from "./Components/Pagination";
 
+const API_KEY = import.meta.env.TMDB_API_KEY;
+
 const App = () => {
   const [movies, setMovies] = useState([]);
   //state lift up due to use state variables in app
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch("https://jsonfakery.com/movies/simple-paginate")
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${currentPage}`,
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setMovies(data.data); // <-- önemli
+        //console.log(data);
+        setMovies(data.results); // <-- change with respect to sourse
+        setTotalPages(data.total_pages);
       });
-  }, []); //empty array to prevent default rendering
+  }, [currentPage]); //page based render
 
   //arranging the page display by moviecard per page
-  const moviesPerPage = 12;
+  //const moviesPerPage = 12;
 
-  const lastMovieIndex = currentPage * moviesPerPage;
-  const firstMovieIndex = lastMovieIndex - moviesPerPage;
+  // const lastMovieIndex = currentPage * moviesPerPage;
+  // const firstMovieIndex = lastMovieIndex - moviesPerPage;
 
-  const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
+  // const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
 
   return (
     <>
-      <div>App</div>
+      {/* <div>App</div> */}
 
       {/* movie list */}
-      {currentMovies.map((movie) => (
-        <p key={movie.id}>{movie.original_title}</p>
+      {movies.map((movie) => (
+        <p key={movie.id}>{movie.title}</p>
       ))}
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        totalMovies={movies.length}
-        moviesPerPage={moviesPerPage}
+        totalPages={totalPages}
       />
     </>
   );

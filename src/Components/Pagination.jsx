@@ -2,30 +2,25 @@ import React from "react";
 import { useState } from "react";
 import "./Pagination.css";
 
-const Pagination = ({
-  currentPage,
-  setCurrentPage,
-  totalMovies,
-  moviesPerPage,
-}) => {
+const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   //using state to select pages. 1 is the start, default value.
   //const [currentPage, setCurrentpage] = useState(1);
 
   const pages = [];
 
   //"Math.cell rounds up the next integer"
-  for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++) {
+  for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
 
   return (
     <div className="pagination">
-      <button
+      {/* <button
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Prev
-      </button>
+      </button> */}
       {pages.map((page) => (
         <button
           key={page}
@@ -35,12 +30,12 @@ const Pagination = ({
           {page}
         </button>
       ))}
-      <button
+      {/* <button
         onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPage === pages.length}
       >
         Next
-      </button>
+      </button> */}
       {/* console.log("setCurrentPage:", setCurrentPage); */}
     </div>
   );
