@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MovieWrapper from "./Components/MovieWrapper";
-import RandomBtn from "./Components/RandomBtn";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
