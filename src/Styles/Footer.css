@@ -1,8 +1,12 @@
+* {
+    margin: 0;
+}
+
 .footer {
     margin-top: auto;
     background-color: #2B2833;
     color: white;
-    padding: 0rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .footer-left h2 {
