@@ -1,33 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchAllMovies } from "../Api/Api_SortFilter.js";
 import "../Styles/MovieFilter.css";
 import "../Components/MovieCard.jsx";
 import MovieCard from "../Components/MovieCard.jsx";
 
-function MovieFilter() {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function MovieFilter({ movies }) {
   const [sortBy, setSortBy] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
-
-  //Get data via api
-  useEffect(() => {
-    fetchAllMovies()
-      .then((data) => {
-        setMovies(data);
-      })
-      .catch(() => {
-        setError("Failed to load movies.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  //Early return
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
 
   //Filters the list before choosing sorting
   const sortedMovies = [...movies]

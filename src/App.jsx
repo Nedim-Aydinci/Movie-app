@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <MovieFilter />
+      <MovieFilter movies={movies} />
       <MovieWrapper movies={movies} />
     </>
   );
