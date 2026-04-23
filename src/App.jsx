@@ -37,7 +37,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar onSearch={testSearch} /> {/*<-- Här sätts API-anropets funktion in*/}
+      <Navbar onSearch={movies} /> {/*<-- Här sätts API-anropets funktion in*/}
             
       {/* movie list */}
       <MovieWrapper movies={movies} />
@@ -47,7 +47,7 @@ const App = () => {
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       />
-      
+      <Footer />
     </>
   );
 };

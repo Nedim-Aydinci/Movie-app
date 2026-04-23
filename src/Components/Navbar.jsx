@@ -1,5 +1,5 @@
 import { FaHeart, FaUser } from "react-icons/fa"
-import "./Navbar.css"
+import "../Styles/Navbar.css"
 import { useState } from "react";
 
 function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
