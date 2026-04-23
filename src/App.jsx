@@ -37,9 +37,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar onSearch={movies} /> {/*<-- Här sätts API-anropets funktion in*/}
-            
-      {/* movie list */}
+      <Navbar/>
       <MovieWrapper movies={movies} />
       
       <Pagination
