@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import MovieCard from "./MovieCard";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
-function randomNumber(max) {
-  const randomNmbr = Math.floor(Math.random() * max);
-  return randomNmbr;
-}
 
 export default function RandomBtn() {
   const [movie, setMovie] = useState(null);
@@ -38,6 +35,7 @@ export default function RandomBtn() {
 
   return (
     <>
+      <MovieCard movie={movie} />
       <button onClick={fetchRandomMovie} disabled={loading}>{loading ? "Laddar..." : "Click to get a random movie!"}</button>
     </>
   );

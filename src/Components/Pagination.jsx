@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./Pagination.css";
+import "../Styles/Pagination.css";
 
 //adjustment of page amount
 const WINDOW_SIZE = 10;
