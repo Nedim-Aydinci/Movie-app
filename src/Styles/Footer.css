@@ -2,7 +2,7 @@
     margin-top: auto;
     background-color: #2B2833;
     color: white;
-    padding: 0rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .footer-left h2 {
@@ -37,19 +37,26 @@
     justify-content: end;
 }
 
+
 /*Telefon*/
+
 @media (max-width: 600px) {
-    .footer-container {
+    .footer-container{
         flex-direction: column;
         gap: 2rem;
         align-items: flex-start;
     }
 
-    .footer-middle {
+
+    .footer-middle{
         gap: 2rem;
     }
 
-    .footer-trademark {
+    .footer-trademark{
         justify-content: center;
+    }
+
+    .footer-icons{
+        margin-top: 1rem;
     }
 }

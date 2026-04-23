@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
 import Pagination from "./Components/Pagination";
 import RandomBtn from "./Components/RandomBtn";
+import Footer from './Components/Footer'
+import Navbar from './Components/Navbar'
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -35,6 +37,8 @@ const App = () => {
 
   return (
     <>
+      <Navbar onSearch={testSearch} /> {/*<-- Här sätts API-anropets funktion in*/}
+            
       {/* movie list */}
       <MovieWrapper movies={movies} />
       
