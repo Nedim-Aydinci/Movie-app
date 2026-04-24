@@ -31,8 +31,8 @@ function App() {
 
   return (
     <>
-      <MovieWrapper movies={movies} />
       <RandomTrailer />
+      <MovieWrapper movies={movies} />
     </>
   );
 }
