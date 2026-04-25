@@ -1,16 +1,16 @@
 .movie-wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 25px;
     grid-row-gap: 25px;
 
     justify-content: center;
     align-items: center;
-    padding: 2rem 27rem
+    /* padding: 2rem 27rem */
 }
 
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
     .movie-wrapper {
         padding: 2rem 20rem
     }
@@ -26,13 +26,13 @@
     .movie-wrapper {
         padding: 2rem 3rem
     }
-}
+} */
 
 @media (max-width: 600px) {
     .movie-wrapper {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        padding: 2rem 3rem;
+        /* grid-template-rows: repeat(5, 1fr);
+        padding: 2rem 3rem; */
         gap: 8px;
     }
 }

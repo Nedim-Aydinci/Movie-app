@@ -30,10 +30,16 @@ function App() {
   }, [page]);
 
   return (
-    <>
-      <RandomTrailer />
+    <div className="page-container">
+      <div className="top-section">
+        <div className="genres">Genres</div>
+        <div className="trailer-area">
+          <RandomTrailer />
+        </div>
+      </div>
+
       <MovieWrapper movies={movies} />
-    </>
+    </div>
   );
 }
 

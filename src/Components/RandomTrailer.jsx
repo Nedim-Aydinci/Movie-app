@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "./RandomTrailer.css";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const RandomTrailer = () => {
+  const [movie, setMovie] = useState(null);
   const [trailerKey, setTrailerKey] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -67,16 +69,17 @@ const RandomTrailer = () => {
   if (error) return <p>Something went wrong!</p>;
 
   return (
-    <div>
-      {movie?.title}
+    <div className="trailer-section">
+      <h2 className="trailer-title">{movie?.title}</h2>
 
       {trailerKey ? (
-        <inframe
-          width="100%"
-          height="400"
-          src={`https://www.youtube.com/embed/${trailerKey}`}
-          title="Trailer"
-        />
+        <div className="trailer-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${trailerKey}`}
+            title="Trailer"
+            allowFullScreen
+          />
+        </div>
       ) : (
         <p>Trailer not available</p>
       )}
