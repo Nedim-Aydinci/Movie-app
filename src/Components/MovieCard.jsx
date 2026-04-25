@@ -7,6 +7,7 @@ import { useState } from "react";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 export default function MovieCard({ movie, onClick = undefined }) {
+  //useState for saving "favorited" movies to localstorage, checking if it already exists, if it doesnt it adds it
   const [isFavorite, setIsFavorite] = useState(() => {
     const saved = localStorage.getItem("favorites");
 
@@ -17,16 +18,17 @@ export default function MovieCard({ movie, onClick = undefined }) {
     return favorites.includes(movie.id);
   });
 
-  const posterPath = movie.poster_path
-    ? `${IMAGE_BASE_URL}${movie.poster_path}`
-    : "https://placehold.co/500x750?text=No+Poster";
+  const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
 
   const toggleFavorite = (e) => {
+    //when favorite is clicked it only clicks on favorite and not the whole card
     e.stopPropagation();
 
     const saved = localStorage.getItem("favorites");
+
     let favorites = saved ? JSON.parse(saved) : [];
 
+    //toggle movie id in the favorites array
     if (isFavorite) {
       favorites = favorites.filter((id) => id !== movie.id);
     } else {
@@ -39,11 +41,7 @@ export default function MovieCard({ movie, onClick = undefined }) {
   };
 
   return (
-    <article
-      className="movie-card"
-      onClick={onClick}
-      role={onClick ? "button" : "article"}
-    >
+    <article className="movie-card" onClick={onClick} role={"button"}>
       <div className="movie-poster-container">
         <img
           src={posterPath}
