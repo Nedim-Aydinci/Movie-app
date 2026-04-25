@@ -5,14 +5,15 @@ const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const RandomTrailer = () => {
   const [trailerKey, setTrailerKey] = useState(null);
+  const [loading, setLoadinf] = useState(true);
 
   useEffect(() => {
-    //early return if no movie was found
-    if (!movie) return;
+    setLoading(true);
 
     fetch("https://api.themoviedb.org/3/movie/popular", {
       headers: {
         Authorization: `Bearer ${TMDB_TOKEN}`,
+        accept: "application/json",
       },
     })
       .then((response) => response.json())
@@ -38,6 +39,7 @@ const RandomTrailer = () => {
     fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos`, {
       headers: {
         Authorization: `Bearer ${TMDB_TOKEN}`,
+        accept: "application/json",
       },
     })
       .then((response) => response.json())
@@ -49,9 +51,28 @@ const RandomTrailer = () => {
         );
 
         setTrailerKey(trailer?.key);
+        setLoading(false);
       });
   }, [movie]);
-  return <div>{movie?.title}</div>;
+  //loading state
+  if (loading) return <p> Loading trailer...</p>;
+
+  return (
+    <div>
+      {movie?.title}
+
+      {trailerKey ? (
+        <inframe
+          width="100%"
+          height="400"
+          src={`https://www.youtube.com/embed/${trailerKey}`}
+          title="Trailer"
+        />
+      ) : (
+        <p>Trailer not available</p>
+      )}
+    </div>
+  );
 };
 
 export default RandomTrailer;
