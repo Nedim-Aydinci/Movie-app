@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
 import Pagination from "./Components/Pagination";
-import RandomBtn from "./Components/RandomBtn";
+import RandomBtn from "./Components/RandomMovie";
 import Footer from './Components/Footer'
 import Navbar from './Components/Navbar'
 
@@ -46,6 +46,7 @@ const App = () => {
         totalPages={totalPages}
       />
       <Footer />
+      <RandomBtn />
     </>
   );
 };
