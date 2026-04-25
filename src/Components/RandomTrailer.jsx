@@ -5,7 +5,8 @@ const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const RandomTrailer = () => {
   const [trailerKey, setTrailerKey] = useState(null);
-  const [loading, setLoadinf] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -29,7 +30,8 @@ const RandomTrailer = () => {
         const randomMovie = data.results[randomIndex];
 
         setMovie(randomMovie);
-      });
+      })
+      .catch(() => setError(true));
   }, []);
 
   useEffect(() => {
@@ -52,10 +54,17 @@ const RandomTrailer = () => {
 
         setTrailerKey(trailer?.key);
         setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, [movie]);
-  //loading state
+  //loading state message
   if (loading) return <p> Loading trailer...</p>;
+
+  //Error state message
+  if (error) return <p>Something went wrong!</p>;
 
   return (
     <div>
