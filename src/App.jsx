@@ -1,5 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Favotites from "./pages/Favorites";
+import RandomMovie from "./pages/RandomMovie";
+import Movie from "./pages/Movie";
 import MovieWrapper from "./Components/MovieWrapper";
 import Pagination from "./Components/Pagination";
 import RandomBtn from "./Components/RandomMovie";
@@ -36,6 +41,14 @@ const App = () => {
   }, [currentPage]); //page based render
 
   return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/randommovie" element={<RandomMovie />} />
+      <Route path="/movie" element={<Movie />} />
+      <Route path="/favorites" element={<Favotites />} />
+    </Routes>
+  );
+  /*return (
     <>
       <Navbar />
       <MovieWrapper movies={movies} />
@@ -47,7 +60,7 @@ const App = () => {
       />
       <Footer />
     </>
-  );
+  );*/
 };
 
 export default App;
