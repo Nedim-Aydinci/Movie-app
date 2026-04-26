@@ -1,3 +1,11 @@
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
 .movie-card {
   background: #1a1a1a;
   border-radius: 12px;
@@ -8,6 +16,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }

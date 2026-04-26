@@ -1,7 +1,7 @@
 import MovieWrapper from "../Components/MovieWrapper";
 import Pagination from "../Components/Pagination";
 
-export default function Home({
+export default function HomePage({
   movies,
   currentPage,
   setCurrentPage,

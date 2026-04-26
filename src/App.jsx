@@ -1,10 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favorites";
-import RandomMovie from "./pages/RandomMovie";
-import Movie from "./pages/Movie";
+import HomePage from "./pages/HomePage";
+import FavoritesPage from "./pages/FavoritesPage";
+import RandomMoviePage from "./pages/RandomMoviePage";
+import MoviePage from "./pages/MoviePage";
 import Layout from "./Components/Layout";
 
 
@@ -43,7 +43,7 @@ const App = () => {
         <Route
           index
           element={
-            <Home
+            <HomePage
               movies={movies}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
@@ -51,9 +51,9 @@ const App = () => {
             />
           }
         />
-        <Route path="randommovie" element={<RandomMovie />} />
-        <Route path="movie/:id" element={<Movie />} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path="randommovie" element={<RandomMoviePage />} />
+        <Route path="movie/:id" element={<MoviePage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
       </Route>
     </Routes>
   );

@@ -1,6 +1,7 @@
 import { FaHeart, FaUser } from "react-icons/fa";
 import "../Styles/Navbar.css";
 import { useState } from "react";
+import { Link } from "react-router";
 
 function Navbar({ onSearch }) {
   //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
@@ -19,10 +20,10 @@ function Navbar({ onSearch }) {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <h1 className="logo">
+          <Link to=""><h1 className="logo">
             Movie <br />
             Library
-          </h1>
+          </h1></Link>
 
           <div className="nav-right">
             <input
@@ -34,7 +35,7 @@ function Navbar({ onSearch }) {
             />
 
             <div className="nav-icons">
-              <FaHeart />
+              <Link to="Favorites"><FaHeart /></Link>
               <FaUser />
             </div>
           </div>
