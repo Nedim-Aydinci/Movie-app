@@ -33,7 +33,7 @@
 
 .movie-info h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: clamp(1rem, 5vw, 1.8rem);
   color: #ffffff;
 }
 
@@ -44,9 +44,9 @@
 }
 
 .movie-info-overview {
-  line-height: 1.6;
+  line-height: 1.4;
   color: #e0e0e0;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .movie-info-stats {

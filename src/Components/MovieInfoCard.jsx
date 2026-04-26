@@ -6,12 +6,16 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 export default function MovieInfoCard({ movie }) {
   //poster path because movie.poster_path only gives the specific img and not the whole url
   const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
+  const backdropPath = `${IMAGE_BASE_URL}${movie.backdrop_path}`;
 
   //Movie info card
   return (
     <div className="movie-info-card">
       <div className="movie-info-poster">
-        <img src={posterPath} alt={movie.title} />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={backdropPath} />
+          <img src={posterPath} alt={movie.title} />
+        </picture>
       </div>
       <div className="movie-info">
         <h1>{movie.title}</h1>
@@ -19,10 +23,9 @@ export default function MovieInfoCard({ movie }) {
         <p className="movie-info-overview">{movie.overview}</p>
 
         <div className="movie-info-stats">
-         
           {/*rounds the number to get less of extra numbers and it looks better*/}
           <p>Popularitet: {Math.round(movie.popularity)}</p>
-           <div className="movie-rating">
+          <div className="movie-rating">
             <img src={star} alt="rating" className="star-icon" />
             <span>{movie.vote_average.toFixed(1)}</span>
           </div>
