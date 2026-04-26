@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Styles/MovieFilter.css";
-import "../Components/MovieCard.jsx";
-import MovieCard from "../Components/MovieCard.jsx";
+import MovieWrapper from "./MovieWrapper.jsx";
 
 function MovieFilter({ movies }) {
   const [sortBy, setSortBy] = useState("");
@@ -70,12 +69,7 @@ function MovieFilter({ movies }) {
             <option value="popularity">Rating</option>
           </select>
         </div>
-
-        <div className="movie-wrapper">
-          {sortedMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+        <MovieWrapper movies={sortedMovies} />
       </div>
     </>
   );

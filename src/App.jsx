@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import MovieWrapper from "./Components/MovieWrapper";
 import MovieFilter from "./Components/MovieFilter";
 import Footer from "./Components/Footer";
 
@@ -33,8 +32,6 @@ function App() {
   return (
     <>
       <MovieFilter movies={movies} />
-      <MovieWrapper movies={movies} />
-
       <Footer />
     </>
   );
