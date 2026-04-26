@@ -1,4 +1,5 @@
 import "../Styles/MovieInfoCard.css";
+import star from "../assets/star.svg";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -18,12 +19,13 @@ export default function MovieInfoCard({ movie }) {
         <p className="movie-info-overview">{movie.overview}</p>
 
         <div className="movie-info-stats">
-          {/*if genres exists, loops through all genres and displays them in p tags */}
-          {movie.genres && (
-            <p>Genrer: {movie.genres.map((g) => g.name).join(", ")}</p>
-          )}
+         
           {/*rounds the number to get less of extra numbers and it looks better*/}
           <p>Popularitet: {Math.round(movie.popularity)}</p>
+           <div className="movie-rating">
+            <img src={star} alt="rating" className="star-icon" />
+            <span>{movie.vote_average.toFixed(1)}</span>
+          </div>
         </div>
       </div>
     </div>

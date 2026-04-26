@@ -52,6 +52,7 @@
 .movie-info-stats {
   display: flex;
   gap: 15px;
+  justify-content: space-between;
   margin-top: auto;
   padding-top: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -63,6 +64,19 @@
   border-radius: 8px;
   font-size: 0.85rem;
   color: #f1f1f1;
+}
+
+.movie-rating {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #f1f1f1;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 768px) {

@@ -1,4 +1,4 @@
-import { FaHeart, FaUser } from "react-icons/fa";
+import { FaHeart, FaUser, FaDice } from "react-icons/fa";
 import "../Styles/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -36,6 +36,7 @@ function Navbar({ onSearch }) {
 
             <div className="nav-icons">
               <Link to="Favorites"><FaHeart /></Link>
+              <Link to="RandomMovie"><FaDice /></Link>
               <FaUser />
             </div>
           </div>
