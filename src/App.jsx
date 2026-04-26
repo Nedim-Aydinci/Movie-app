@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import MovieWrapper from "./Components/MovieWrapper";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -33,6 +34,8 @@ function App() {
     <>
       <Navbar/>
       <MovieWrapper movies={movies} />
+      
+      <Footer />
     </>
   );
 }
