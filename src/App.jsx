@@ -57,19 +57,6 @@ const App = () => {
       </Route>
     </Routes>
   );
-  /*return (
-    <>
-      <Navbar />
-      <MovieWrapper movies={movies} />
-
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
-      <Footer />
-    </>
-  );*/
 };
 
 export default App;
