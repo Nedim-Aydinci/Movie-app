@@ -2,15 +2,11 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
-import Favotites from "./pages/Favorites";
+import Favorites from "./pages/Favorites";
 import RandomMovie from "./pages/RandomMovie";
 import Movie from "./pages/Movie";
 import Layout from "./Components/Layout";
-import MovieWrapper from "./Components/MovieWrapper";
-import Pagination from "./Components/Pagination";
-import RandomBtn from "./Components/RandomMovie";
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar";
+
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -44,10 +40,20 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/randommovie" element={<RandomMovie />} />
-        <Route path="/movie" element={<Movie />} />
-        <Route path="/favorites" element={<Favotites />} />
+        <Route
+          index
+          element={
+            <Home
+              movies={movies}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          }
+        />
+        <Route path="randommovie" element={<RandomMovie />} />
+        <Route path="movie/:id" element={<Movie />} />
+        <Route path="favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );
