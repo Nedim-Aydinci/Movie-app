@@ -2,18 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.5rem;
   margin-bottom: 0.2rem;
+  padding: 0 1rem;
 }
-
 .movie-filter-controls label {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 5px;
 }
-
 .movie-filter-controls select {
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
@@ -27,9 +27,17 @@
   transition:
     border-color 0.2s,
     background-color 0.2s;
+  max-width: 100%;
 }
-
 .movie-filter-controls option {
   background-color: rgb(238, 182, 77);
   color: #2b2833;
+}
+@media (max-width: 480px) {
+  .movie-filter-controls {
+    flex-direction: column;
+  }
+  .movie-filter-controls select {
+    width: 50%;
+  }
 }
