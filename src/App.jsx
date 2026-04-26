@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MovieWrapper from "./Components/MovieWrapper";
+import Footer from "./Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -31,6 +32,8 @@ function App() {
   return (
     <>
       <MovieWrapper movies={movies} />
+      
+      <Footer />
     </>
   );
 }
