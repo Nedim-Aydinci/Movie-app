@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
+import RandomTrailer from "./Components/RandomTrailer";
 import Pagination from "./Components/Pagination";
 import MovieCard from "./Components/MovieCard";
 import Footer from "./Components/Footer";
@@ -35,6 +36,14 @@ const App = () => {
 
   return (
     <>
+      <div className="page-container">
+        <div className="top-section">
+          <div className="genres">Genres</div>
+          <div className="trailer-area">
+            <RandomTrailer />
+          </div>
+        </div>
+      </div>
       <MovieWrapper movies={movies} />;
       <Pagination
         currentPage={currentPage}
