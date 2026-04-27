@@ -1,114 +1,125 @@
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
 .movie-card {
-    background: #1a1a1a;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1a1a1a;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: var(--border);
 }
 
 .movie-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: var(--bs-sm);
+  border-color: var(--border-color-hv);
 }
 
 .movie-poster-container {
-    position: relative;
-    aspect-ratio: 2 / 3;
-    width: 100%;
-    flex-shrink: 0;
-    overflow: hidden;
+  position: relative;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .favorite-btn {
-    display: flex;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
 .movie-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .movie-rating-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    padding: 4px 8px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #f1f1f1;
-    font-weight: bold;
-    font-size: 0.9rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary);
+  backdrop-filter: blur(5px);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #f1f1f1;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .movie-favorite {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 
-    padding: 4px 4px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 4px 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .movie-favorite:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(5px);
+  transform: translateY(-5px);
+  box-shadow: var(--bs-sm);
+  background: var(--primary);
+  backdrop-filter: blur(5px);
 }
 
 .star-icon {
-    width: 14px;
-    height: 14px;
+  width: 14px;
+  height: 14px;
 }
 
 .movie-content {
-    padding: 12px;
-    background: linear-gradient(to bottom, #292929, #000000);
+  padding: 12px;
+  background: var(--gradient);
 }
 
 .movie-title {
-    margin: 0;
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    color: #ffffff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
+  margin: 0;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 480px) {
-    .movie-rating-badge {
-        top: 5px;
-        right: 5px;
-        padding: 2px 6px;
-        font-size: 0.75rem;
-    }
-    
-    .movie-favorite {
-        top: 5px;
-        left: 5px;
-    }
+  .movie-rating-badge {
+    top: 5px;
+    right: 5px;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+  }
 
-    .movie-content {
-        padding: 8px; 
-    }
+  .movie-favorite {
+    top: 5px;
+    left: 5px;
+  }
+
+  .movie-content {
+    padding: 8px;
+  }
 }
