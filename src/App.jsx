@@ -7,7 +7,6 @@ import RandomMoviePage from "./pages/RandomMoviePage";
 import MoviePage from "./pages/MoviePage";
 import Layout from "./Components/Layout";
 
-
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const App = () => {
