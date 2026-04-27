@@ -1,11 +1,13 @@
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./Pages/NotFound";
-import Home from "./Pages/Home";
+//to implement page logic prev content of the app.jsx moved inside home.jsx
+import { useState, useEffect } from "react";
+import MovieWrapper from "./Components/MovieWrapper";
+import Pagination from "./Components/Pagination";
+import MovieCard from "./Components/MovieCard";
+import Footer from "./Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
-const App = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   //state lift up due to use state variables in app
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,4 +46,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
