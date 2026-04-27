@@ -1,5 +1,5 @@
 .page-container .top-section {
-    padding: 2rem 20rem;
+    padding: 2rem 10rem;
 }
 
 .top-section {
@@ -19,7 +19,7 @@
 
 @media (max-width: 1600px) {
     .page-container {
-        padding: 2rem 20rem;
+        padding: 2rem 10rem;
     }
 
 }

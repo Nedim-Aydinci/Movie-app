@@ -36,8 +36,13 @@ const Home = () => {
   }, [currentPage]); //page based render
 
   return (
-    <>
-      <RandomTrailer />
+    <div className="page-container">
+      <div className="top-section">
+        <div className="genres">Genres</div>
+        <div className="trailer-area">
+          <RandomTrailer />
+        </div>
+      </div>
       <MovieWrapper movies={movies} />
 
       <Pagination
@@ -46,7 +51,7 @@ const Home = () => {
         totalPages={totalPages}
       />
       <Footer />
-    </>
+    </div>
   );
 };
 
