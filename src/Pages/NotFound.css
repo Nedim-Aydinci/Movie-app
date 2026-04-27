@@ -1,0 +1,64 @@
+.NotFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: grey;
+}
+
+.notfound-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.5rem;
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    background: rgba(20,20,20, 0.9);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 0, 0.2);
+
+    z-index: 10;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notfound-card:hover {
+    transform: translateY(-5px) scale(1.02);
+
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.notfound-card h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #ff3b3b;
+
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+.notfound-card p {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+.notfound-card button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #ff3b3b, #ff0000);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notfound-card button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #ff5c5c, #ff1a1a);
+}

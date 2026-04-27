@@ -1,9 +1,9 @@
 //to implement page logic prev content of the app.jsx moved inside home.jsx
 import { useState, useEffect } from "react";
-import MovieWrapper from "./Components/MovieWrapper";
-import Pagination from "./Components/Pagination";
-import MovieCard from "./Components/MovieCard";
-import Footer from "./Components/Footer";
+import MovieWrapper from "../Components/MovieWrapper";
+import Pagination from "../Components/Pagination";
+import MovieCard from "../Components/MovieCard";
+import Footer from "../Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
