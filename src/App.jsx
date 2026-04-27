@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import MovieWrapper from "./Components/MovieWrapper";
 import RandomTrailer from "./Components/RandomTrailer";
+import Footer from "./Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -30,16 +31,19 @@ function App() {
   }, [page]);
 
   return (
-    <div className="page-container">
-      <div className="top-section">
-        <div className="genres">Genres</div>
-        <div className="trailer-area">
-          <RandomTrailer />
+    <>
+      <div className="page-container">
+        <div className="top-section">
+          <div className="genres">Genres</div>
+          <div className="trailer-area">
+            <RandomTrailer />
+          </div>
         </div>
       </div>
-
       <MovieWrapper movies={movies} />
-    </div>
+
+      <Footer />
+    </>
   );
 }
 
