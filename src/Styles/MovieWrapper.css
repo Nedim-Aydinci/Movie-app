@@ -10,7 +10,7 @@
     /* padding: 2rem 27rem */
 }
 
-/* @media (max-width: 1600px) {
+@media (max-width: 1600px) {
     .movie-wrapper {
         padding: 2rem 20rem
     }
@@ -26,7 +26,7 @@
     .movie-wrapper {
         padding: 2rem 3rem
     }
-} */
+}
 
 @media (max-width: 600px) {
     .movie-wrapper {
