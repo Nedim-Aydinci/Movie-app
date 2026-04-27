@@ -1,0 +1,7 @@
+.random-movie-page {
+    width: 100%;
+    height: 77vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

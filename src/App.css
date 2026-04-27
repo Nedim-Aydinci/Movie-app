@@ -1,4 +1,9 @@
-.page-container {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-container .top-section {
     padding: 2rem 10rem;
 }
 
