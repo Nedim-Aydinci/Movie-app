@@ -1,38 +1,4 @@
 .pagination {
-<<<<<<< HEAD
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin: 20px o;
-    flex-wrap: wrap;
-}
-
-.pagination button {
-    padding:8px 14px;
-    border: 1px solid #ddd;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.2s ease;
-}
-
-.pagination button:hover {
-    background-color: #f0f0f0;
-}
-.pagination button:disabled {
-    background-color: #eee;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-.pagination button:active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-}
-=======
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,4 +31,3 @@
   color: white;
   border-color: #007bff;
 }
->>>>>>> origin/feature/global-styling

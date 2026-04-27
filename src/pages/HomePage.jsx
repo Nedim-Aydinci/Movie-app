@@ -12,7 +12,6 @@ export default function HomePage({
     <>
       <div className="page-container">
         <div className="top-section">
-          <div className="genres">Genres</div>
           <div className="trailer-area">
             <RandomTrailer />
           </div>
