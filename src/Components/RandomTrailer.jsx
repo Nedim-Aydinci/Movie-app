@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "../Styles/RandomTrailer.css";
-
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 const RandomTrailer = () => {

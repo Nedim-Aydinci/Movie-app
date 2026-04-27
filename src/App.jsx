@@ -37,16 +37,14 @@ const App = () => {
 
   return (
     <>
-      <MovieFilter movies={movies} />
       <div className="page-container">
         <div className="top-section">
-          <div className="genres">Genres</div>
           <div className="trailer-area">
             <RandomTrailer />
           </div>
         </div>
       </div>
-      <MovieWrapper movies={movies} />;
+      <MovieFilter movies={movies} />
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
