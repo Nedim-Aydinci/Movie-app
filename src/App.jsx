@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
 import "./App.css";
+import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
 import RandomTrailer from "./Components/RandomTrailer";
+import Pagination from "./Components/Pagination";
+import MovieCard from "./Components/MovieCard";
 import Footer from "./Components/Footer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
-function App() {
+const App = () => {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1); //pagination, kan tas bort bara för test
+  //state lift up due to use state variables in app
+  const [currentPage, setCurrentPage] = useState(1);
+  //totalPages implemented after changing api-source
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/discover/movie?with_original_language=en",
+      `https://api.themoviedb.org/3/discover/movie?with_original_language=en&page=${currentPage}&sort_by=popularity.desc`,
       {
         method: "GET",
         headers: {
@@ -21,14 +26,13 @@ function App() {
         },
       },
     )
-      .then((response) => response.json())
-      .then((responseObject) => {
-        const fetchTwelve = responseObject.results.slice(0, 12);
-        setMovies(fetchTwelve);
-      })
-
-      .catch((error) => console.error("Error fetching movies", error));
-  }, [page]);
+      .then((res) => res.json())
+      .then((data) => {
+        //to display less movieCard "slice" implemented to results
+        setMovies(data.results.slice(0, 12)); // <-- change with respect to page layout
+        setTotalPages(data.total_pages);
+      });
+  }, [currentPage]); //page based render
 
   return (
     <>
@@ -40,11 +44,15 @@ function App() {
           </div>
         </div>
       </div>
-      <MovieWrapper movies={movies} />
-
+      <MovieWrapper movies={movies} />;
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      />
       <Footer />
     </>
   );
-}
+};
 
 export default App;
