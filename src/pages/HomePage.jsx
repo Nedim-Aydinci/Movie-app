@@ -1,6 +1,6 @@
-import MovieWrapper from "../Components/MovieWrapper";
 import Pagination from "../Components/Pagination";
 import RandomTrailer from "../Components/RandomTrailer";
+import MovieFilter from "../Components/MovieFilter";
 
 export default function HomePage({
   movies,
@@ -18,7 +18,7 @@ export default function HomePage({
           </div>
         </div>
       </div>
-      <MovieWrapper movies={movies} />;
+      <MovieFilter movies={movies} />
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
