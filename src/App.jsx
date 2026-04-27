@@ -1,11 +1,12 @@
 import "./App.css";
 import MovieFilter from "./Components/MovieFilter";
 import { useState, useEffect } from "react";
-import MovieWrapper from "./Components/MovieWrapper";
-import RandomTrailer from "./Components/RandomTrailer";
-import Pagination from "./Components/Pagination";
-import MovieCard from "./Components/MovieCard";
-import Footer from "./Components/Footer";
+import { Routes, Route } from "react-router";
+import HomePage from "./pages/HomePage";
+import FavoritesPage from "./pages/FavoritesPage";
+import RandomMoviePage from "./pages/RandomMoviePage";
+import MoviePage from "./pages/MoviePage";
+import Layout from "./Components/Layout";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -32,26 +33,29 @@ const App = () => {
         //to display less movieCard "slice" implemented to results
         setMovies(data.results.slice(0, 12)); // <-- change with respect to page layout
         setTotalPages(data.total_pages);
-      });
+      })
+      .catch((error) => console.error("Error fetching movies", error));
   }, [currentPage]); //page based render
 
   return (
-    <>
-      <div className="page-container">
-        <div className="top-section">
-          <div className="trailer-area">
-            <RandomTrailer />
-          </div>
-        </div>
-      </div>
-      <MovieFilter movies={movies} />
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <HomePage
+              movies={movies}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          }
+        />
+        <Route path="randommovie" element={<RandomMoviePage />} />
+        <Route path="movie/:id" element={<MoviePage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+      </Route>
+    </Routes>
   );
 };
 
