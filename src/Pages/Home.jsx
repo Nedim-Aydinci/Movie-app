@@ -1,7 +1,9 @@
 //to implement page logic prev content of the app.jsx moved inside home.jsx
+import "../Styles/Home.css";
 import { useState, useEffect } from "react";
 import MovieWrapper from "../Components/MovieWrapper";
 import Pagination from "../Components/Pagination";
+import RandomTrailer from "../Components/RandomTrailer";
 import MovieCard from "../Components/MovieCard";
 import Footer from "../Components/Footer";
 
@@ -35,7 +37,9 @@ const Home = () => {
 
   return (
     <>
-      <MovieWrapper movies={movies} />;
+      <RandomTrailer />
+      <MovieWrapper movies={movies} />
+
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
