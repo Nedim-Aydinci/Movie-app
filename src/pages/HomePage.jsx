@@ -24,7 +24,6 @@ export default function HomePage({
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       />
-      <Footer />
     </>
   );
 }
