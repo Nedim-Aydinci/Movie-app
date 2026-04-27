@@ -1,8 +1,12 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import MovieWrapper from "./Components/MovieWrapper";
+<<<<<<< HEAD
 import Pagination from "./Components/Pagination";
 import MovieCard from "./Components/MovieCard";
+=======
+import Footer from "./Components/Footer";
+>>>>>>> origin/main
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -34,12 +38,18 @@ const App = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <MovieWrapper movies={movies} />;
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       />
+=======
+      <MovieWrapper movies={movies} />
+      
+      <Footer />
+>>>>>>> origin/main
     </>
   );
 };
