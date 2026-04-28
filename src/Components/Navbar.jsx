@@ -1,8 +1,9 @@
 import { FaHeart, FaUser } from "react-icons/fa"
 import "../Styles/Navbar.css"
 import { useState } from "react";
+import { Link } from "react-router";
 
-function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
+function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
     //När användaren söker skickas query-värdet upp till App.jsx via onSearch-propen
 
     const [query, setQuery] = useState("") //Börja med tom sträng
@@ -17,7 +18,9 @@ function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas
         <>
             <nav className="navbar">
                 <div className="nav-container">
-                    <h1 className="logo">Movie <br/>Library</h1>
+                    <Link to="/" onClick={onReset}>
+                    <h1 className="logo">Movie<br/>Library</h1>
+                    </Link>
 
                     <div className="nav-right">
                         <input className="search-bar" 
@@ -28,7 +31,7 @@ function Navbar({ onSearch }) { //Skickar onSearch som prop så att allt kopplas
                     />
 
                     <div className="nav-icons">
-                        <FaHeart />
+                        <Link to="/favourites"><FaHeart /></Link>
                         <FaUser />
                     </div>
                     </div>

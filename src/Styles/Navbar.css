@@ -33,6 +33,10 @@
     padding: 5px 10px;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 /*Telefon*/
 @media (max-width: 600px) {
