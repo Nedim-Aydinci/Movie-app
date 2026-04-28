@@ -3,31 +3,19 @@ a {
   color: inherit;
 }
 
-<<<<<<< HEAD
-.page-container {
-    padding: 2rem 10rem;
-    margin: 0 auto;  
-=======
 .page-container .top-section {
   padding: 2rem 10rem;
->>>>>>> c5a21d0b82a6ff7db6b2ab2a3b50d81e09be69f8
 }
 
 .top-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
-}
+  /* gap: 25px;*/
+} 
 
 .trailer-area {
-<<<<<<< HEAD
-    grid-column: span 1;
-    max-width: 16/12;
-    min-width: 0;
-=======
-  grid-column: 1 / -1;
+  grid-column: 1 ;
   width: 100%;
->>>>>>> c5a21d0b82a6ff7db6b2ab2a3b50d81e09be69f8
 }
 
 @media (max-width: 1600px) {
@@ -68,5 +56,6 @@ a {
 @media (max-width: 600px) {
   .page-container {
     padding: 1rem;
+    
   }
 }

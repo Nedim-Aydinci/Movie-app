@@ -12,8 +12,8 @@ export default function HomePage({
     <>
       <div className="page-container">
         <div className="top-section">
-          <div className="trailer-area">
-            <RandomTrailer />
+          <div className="page-wrapper">
+            <RandomTrailer key={currentPage} />
           </div>
         </div>
       </div>
