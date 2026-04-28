@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //Skapa ett tomt formulär som ett objekt
-const form = {
+const emptyForm = {
   name: "",
   email: "",
   message: "",
@@ -10,7 +10,7 @@ const form = {
 };
 
 function ContactForm() {
-  const [form, setForm] = useState(form); //alla input sparas i en state
+  const [form, setForm] = useState(emptyForm); //alla input sparas i en state
   const [error, setError] = useState({}); //vid error kan vi tömma alla input
 
   const validate = () => {
@@ -134,9 +134,7 @@ function ContactForm() {
               checked={form.newsletter}
               onChange={handleChange}
             />
-            <label htmlFor="newsletter">
-              I want to subscribe to the newsletter
-            </label>
+            <label htmlFor="newsletter">Subscribe on newsletter</label>
           </div>
           {/*Valfritt att fylla i checkbox, inget felmeddelande behövs*/}
         </div>
