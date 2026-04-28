@@ -10,12 +10,64 @@ const form = {
 };
 
 function ContactForm() {
-  const [form, setFor] = useState(form); //alla input sparas i en state
+  const [form, setForm] = useState(form); //alla input sparas i en state
   const [error, setError] = useState({}); //vid error kan vi tömma alla input
 
-  const handleChange;
+  const validate = () => {
+    const newError = {};
 
-  const handleSubmit;
+    if (!form.name.trim()) {
+      newError.name = "Name is required.";
+    }
+
+    if (!form.email.trim()) {
+      newError.email = "Email is required.";
+    } else if (!form.email.includes("@")) {
+      newError.email = "Email must include @";
+    }
+
+    if (!form.message.trim()) {
+      newError.message = "Message is required.";
+    }
+    if (!form.agree) {
+      newError.agree = "You must accept the terms.";
+    }
+
+    return newError;
+  };
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+
+    if (error[name]) {
+      setError((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  //Förhindra att sidan laddas om, vid felaktig input
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    //Hanterar valideringen
+    const newError = validate();
+
+    //Räknar antalet fel
+    if (Object.keys(newError).length > 0) {
+      setError(newError);
+      return;
+    }
+
+    //Om allt är okej kan formuläret uppdateras med hjälp av state
+    setForm(form);
+    setError({});
+
+    alert("Your message have been sent!");
+  };
 
   return (
     <>
@@ -86,7 +138,7 @@ function ContactForm() {
               I want to subscribe to the newsletter
             </label>
           </div>
-          {/*Valfri checkbox, inget felmeddelande behövs*/}
+          {/*Valfritt att fylla i checkbox, inget felmeddelande behövs*/}
         </div>
         <button type="submit" className="submit-btn">
           Send
