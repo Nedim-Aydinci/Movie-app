@@ -42,7 +42,7 @@ export default function MovieCard({ movie, onClick = undefined }) {
   };
 
   return (
-    <Link to={`movie/${movie.id}`} className="movie-card-link">
+    <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <article className="movie-card" onClick={onClick} role={"button"}>
         <div className="movie-poster-container">
           <img

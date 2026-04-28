@@ -2,10 +2,10 @@ import "./App.css";
 import MovieFilter from "./Components/MovieFilter";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
-import HomePage from "./pages/HomePage";
-import FavoritesPage from "./pages/FavoritesPage";
-import RandomMoviePage from "./pages/RandomMoviePage";
-import MoviePage from "./pages/MoviePage";
+import HomePage from "./Pages/HomePage";
+import FavoritesPage from "./Pages/FavoritesPage";
+import RandomMoviePage from "./Pages/RandomMoviePage";
+import MoviePage from "./Pages/MoviePage";
 import Layout from "./Components/Layout";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
