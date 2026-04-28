@@ -3,8 +3,9 @@ a {
   color: inherit;
 }
 
-.page-container .top-section {
+.page-container {
     padding: 2rem 10rem;
+    margin: 0 auto;  
 }
 
 .top-section {
@@ -19,6 +20,8 @@ a {
 
 .trailer-area {
     grid-column: span 1;
+    max-width: 16/12;
+    min-width: 0;
 }
 
 

@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import RandomMoviePage from "./pages/RandomMoviePage";
 import MoviePage from "./pages/MoviePage";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFoundPage";
 import Layout from "./Components/Layout";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
