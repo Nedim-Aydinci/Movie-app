@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../Styles/ContactForm.css";
+import { Link } from "react-router";
 
 //Skapa ett tomt formulär som ett objekt
 const emptyForm = {
@@ -63,7 +65,7 @@ function ContactForm() {
     }
 
     //Om allt är okej kan formuläret uppdateras med hjälp av state
-    setForm(form);
+    setForm(emptyForm);
     setError({});
 
     alert("Your message have been sent!");
@@ -72,7 +74,7 @@ function ContactForm() {
   return (
     <>
       <h1 className="contact-title">Contact</h1>
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleSubmit}>
         <div className="form-input">
           <label htmlFor="name">Name</label>
           <input
@@ -134,13 +136,17 @@ function ContactForm() {
               checked={form.newsletter}
               onChange={handleChange}
             />
-            <label htmlFor="newsletter">Subscribe on newsletter</label>
+            <label htmlFor="newsletter">Subscribe to our newsletter</label>
           </div>
           {/*Valfritt att fylla i checkbox, inget felmeddelande behövs*/}
         </div>
         <button type="submit" className="submit-btn">
           Send
         </button>
+
+        <Link to="/" className="cancel-link">
+          Cancel
+        </Link>
       </form>
     </>
   );
