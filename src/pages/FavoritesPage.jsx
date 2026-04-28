@@ -33,4 +33,5 @@ export default function FavoritesPage() {
   }
 
   return <MovieWrapper movies={favoriteMovies} onUnfavorite={handleUnfavorite} />;
+  
 }
