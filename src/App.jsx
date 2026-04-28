@@ -1,4 +1,5 @@
 import "./App.css";
+import MovieFilter from "./Components/MovieFilter";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import HomePage from "./pages/HomePage";
