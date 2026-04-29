@@ -7,6 +7,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import RandomMoviePage from "./pages/RandomMoviePage";
 import MoviePage from "./pages/MoviePage";
 import Layout from "./Components/Layout";
+import ContactFormPage from "./pages/ContactFormPage";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -82,6 +83,7 @@ const App = () => {
         <Route path="randommovie" element={<RandomMoviePage />} />
         <Route path="movie/:id" element={<MoviePage />} />
         <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="contact" element={<ContactFormPage />} />
       </Route>
     </Routes>
   );
