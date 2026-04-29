@@ -32,6 +32,21 @@
   padding: 5px 10px;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.random-movie{
+  font-size: 2rem;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.random-movie:hover{
+  transform: rotate(90deg) scale(1.2);
+}
+
 /*Telefon*/
 @media (max-width: 600px) {
   .nav-container {
