@@ -23,6 +23,8 @@ function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att all
                     <h1 className="logo">Movie<br/>Library</h1>
                     </Link>
 
+          <Link to="RandomMovie" className="random-movie"><FaDice /></Link>
+
           <div className="nav-right">
             <input
               className="search-bar"
@@ -34,7 +36,7 @@ function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att all
 
             <div className="nav-icons">
               <Link to="Favorites"><FaHeart /></Link>
-              <Link to="RandomMovie"><FaDice /></Link>
+              
               <FaUser />
             </div>
           </div>
