@@ -1,0 +1,139 @@
+.contact-title {
+  text-align: center;
+  margin: 2rem 0 1.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem); /*anpassar skalning efter skärmstorlek*/
+}
+
+.form-container {
+  width: min(92%, 34rem);
+  margin: 0 auto 3rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: #2b2833;
+  color: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.form-input label {
+  width: min(100%, 26rem);
+  text-align: left;
+  font-weight: 500;
+}
+
+.form-input input,
+.form-input textarea {
+  width: min(100%, 26rem);
+  border-radius: 0.6rem;
+  border: 1px solid #444;
+  padding: 0.8rem 0.9rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background: #fff;
+  color: #111;
+}
+
+.form-input textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.form-input input:focus-visible,
+.form-input textarea:focus-visible {
+  outline: 3px solid #f1b44c;
+  outline-offset: 2px;
+  border-color: #f1b44c;
+}
+
+.checkbox-wrapper {
+  width: min(100%, 26rem);
+  margin: 0 auto;
+}
+
+.checkbox {
+  width: min(100%, 26rem);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.checkbox input {
+  width: auto;
+  margin: 0;
+  accent-color: orange;
+}
+
+.checkbox label {
+  text-align: left;
+}
+
+.submit-btn {
+  padding: 0.8rem 1.1rem;
+  border-radius: 0.6rem;
+  border: 1px solid #000;
+  background-color: orange;
+  width: min(100%, 9rem);
+  color: #2b2833;
+  font-size: 1rem;
+  font-weight: 600;
+  align-self: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.error-message {
+  color: #ff8b8b;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+  width: min(100%, 26rem);
+  text-align: left;
+}
+
+.cancel-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: underline;
+  color: #858383;
+}
+
+.cancel-link:hover {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    width: 92%;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .form-input label,
+  .form-input input,
+  .form-input textarea,
+  .error-message,
+  .checkbox-wrapper {
+    width: 100%;
+  }
+
+  .checkbox {
+    justify-content: flex-start;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
