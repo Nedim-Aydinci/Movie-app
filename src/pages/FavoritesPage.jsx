@@ -19,8 +19,8 @@ export default function FavoritesPage() {
             Authorization: `Bearer ${TMDB_TOKEN}`,
             accept: "application/json",
           },
-        }).then((res) => res.json())
-      )
+        }).then((res) => res.json()),
+      ),
     ).then((movies) => setFavoriteMovies(movies));
   }, []);
 
@@ -29,9 +29,14 @@ export default function FavoritesPage() {
   };
 
   if (favoriteMovies.length === 0) {
-    return <p style={{ textAlign: "center", marginTop: "2rem" }}>Inga favoriter ännu.</p>;
+    return (
+      <p style={{ textAlign: "center", marginTop: "2rem" }}>
+        Inga favoriter ännu.
+      </p>
+    );
   }
 
-  return <MovieWrapper movies={favoriteMovies} onUnfavorite={handleUnfavorite} />;
-  
+  return (
+    <MovieWrapper movies={favoriteMovies} onUnfavorite={handleUnfavorite} />
+  );
 }
