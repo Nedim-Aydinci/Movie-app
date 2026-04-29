@@ -66,7 +66,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout onReset={onReset}/>}>
+      <Route path="/" element={<Layout onReset={onReset} onSearch={onSearch}/>}>
         <Route
           index
           element={
