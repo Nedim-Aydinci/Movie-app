@@ -10,28 +10,27 @@
 }
 
 .footer-left h2 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .footer-middle {
-    display: flex;
-    gap: 5rem;
+  display: flex;
+  gap: 5rem;
 }
 
-
 .footer-icons {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .footer-icons:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer-trademark {

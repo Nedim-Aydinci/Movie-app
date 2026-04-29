@@ -1,0 +1,28 @@
+.random-movie-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.random-btn {
+  background: linear-gradient(to bottom, #292929, #000000);
+  border: none;
+  padding: 10px 10px;
+  border-radius: 7px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .random-movie-wrapper {
+    width: 60%;
+  }
+
+  .random-movie-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
