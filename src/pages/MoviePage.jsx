@@ -1,12 +1,7 @@
-import { useParams } from "react-router"
+import { useParams } from "react-router";
 
 export default function MoviePage() {
+  const { id } = useParams();
 
-    const { id } = useParams()
-    
-    return (
-        <>
-        
-        </>
-    )
+  return <></>;
 }

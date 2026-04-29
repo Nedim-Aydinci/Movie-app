@@ -3,8 +3,9 @@ import "../Styles/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router";
 
-function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
-    //När användaren söker skickas query-värdet upp till App.jsx via onSearch-propen
+function Navbar({ onSearch, onReset }) {
+  //Skickar onSearch som prop så att allt kopplas ihop i App.jsx
+  //När användaren söker skickas query-värdet upp till App.jsx via onSearch-propen
 
   const [query, setQuery] = useState(""); //Börja med tom sträng
 
@@ -15,15 +16,21 @@ function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att all
     }
   };
 
-    return (
-        <>
-            <nav className="navbar">
-                <div className="nav-container">
-                    <Link to="/" onClick={onReset}>
-                    <h1 className="logo">Movie<br/>Library</h1>
-                    </Link>
+  return (
+    <>
+      <nav className="navbar">
+        <div className="nav-container">
+          <Link to="/" onClick={onReset}>
+            <h1 className="logo">
+              Movie
+              <br />
+              Library
+            </h1>
+          </Link>
 
-          <Link to="RandomMovie" className="random-movie"><FaDice /></Link>
+          <Link to="RandomMovie" className="random-movie">
+            <FaDice />
+          </Link>
 
           <div className="nav-right">
             <input
@@ -35,8 +42,10 @@ function Navbar({ onSearch, onReset }) { //Skickar onSearch som prop så att all
             />
 
             <div className="nav-icons">
-              <Link to="Favorites"><FaHeart /></Link>
-              
+              <Link to="Favorites">
+                <FaHeart />
+              </Link>
+
               <FaUser />
             </div>
           </div>

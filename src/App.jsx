@@ -14,7 +14,7 @@ const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 const App = () => {
   const [movies, setMovies] = useState([]);
   //state lift up due to use state variables in app
-  const [defaultMovies, setDefaultMovies] = useState([]); 
+  const [defaultMovies, setDefaultMovies] = useState([]);
   //Sparar orginalfilmerna som laddas in i en array när användaren kommer in på sidan
   const [currentPage, setCurrentPage] = useState(1);
   //totalPages implemented after changing api-source
@@ -30,7 +30,7 @@ const App = () => {
           accept: "application/json",
         },
       },
-    )           
+    )
       .then((res) => res.json())
       .then((data) => {
         const fetchTwelve = data.results.slice(0, 12);
@@ -42,32 +42,31 @@ const App = () => {
       .catch((error) => console.error("Error fetching movies", error));
   }, [currentPage]); //page based render
 
-
-  const onReset = () => { 
-    setMovies(defaultMovies);    //Återställer movies till originalfilmerna när användaren klickar på loggan
-  }
-
+  const onReset = () => {
+    setMovies(defaultMovies); //Återställer movies till originalfilmerna när användaren klickar på loggan
+  };
 
   const onSearch = (query) => {
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, 
-    {
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${TMDB_TOKEN}`,
         accept: "application/json",
       },
-    },
-    ) 
+    })
       .then((response) => response.json())
       .then((data) => {
         setMovies(data.results.slice(0, 12)); //Uppdaterar de 12 filmera till de användaren har sökt på
-    })
-    .catch((error) => console.error("Error fetching movies", error));
+      })
+      .catch((error) => console.error("Error fetching movies", error));
   };
 
   return (
     <Routes>
-      <Route path="/" element={<Layout onReset={onReset} onSearch={onSearch}/>}>
+      <Route
+        path="/"
+        element={<Layout onReset={onReset} onSearch={onSearch} />}
+      >
         <Route
           index
           element={

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaDice } from "react-icons/fa"
+import { FaDice } from "react-icons/fa";
 import MovieCard from "./MovieCard";
 import MovieInfoCard from "./MovieInfoCard";
 import "../Styles/RandomMovie.css";
