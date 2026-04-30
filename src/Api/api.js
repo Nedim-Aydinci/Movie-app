@@ -26,7 +26,7 @@ export async function fetchRandomMovie() {
     },
   );
 
-  if (!response.ok) throw new Error("Could not fetch random movie");
+  if (!response.ok) throw new Error("Failed to retrieve random movies");
 
   const data = await response.json();
   //getting a random number depending on how much data we get
@@ -38,14 +38,14 @@ export async function fetchRandomMovie() {
 // ============================================================
 /*used by MovieFilter.jsx (via SearchContext)
 Returns both the movie list and the total number of pages so that the 
-Pagination-component can display the correct number
+pagination-component can display the correct number
 */
 export async function searchMovies(query, page = 1) {
   const response = await fetch(
     `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&page=${page}`,
     { method: "GET", headers },
   );
-  if (!response.ok) throw new Error("Sökningen misslyckades");
+  if (!response.ok) throw new Error("Failed to retrieve movies");
   const data = await response.json();
   return {
     movies: data.results,
@@ -54,21 +54,50 @@ export async function searchMovies(query, page = 1) {
 }
 
 // ============================================================
-//FavoritesPage + MoviePage
-export async function fetchMovieById() {}
+export async function fetchMovieById(id) {
+  const response = await fetch(`${BASE_URL}/movie/${id}`, {
+    method: "GET",
+    headers,
+  });
+  if (!response.ok) throw new Error(`Failed to retrieve movie ${id}`);
+  return response.json();
+}
 
 // ============================================================
-//RandomTrailer
-export async function fetchPopularMovies() {}
+//RandomTrailer -part 1 of 2
+export async function fetchPopularMovies() {
+  const response = await fetch(`${BASE_URL}/movie/popular`, {
+    method: "GET",
+    headers,
+  });
+  if (!response.ok) throw new Error("Failed to retrieve trailer");
+  const data = await response.json();
+  return data.results;
+}
 
 // ============================================================
-//RandomTrailer
-export async function fetchMovieTrailers() {}
+//RandomTrailer -part 2 of 2
+export async function fetchMovieTrailers(movieId) {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}/videos`, {
+    method: "GET",
+    headers,
+  });
+  if (!response.ok) throw new Error("Failed to retrieve trailer");
+  const data = await response.json();
+  return data.results;
+}
 
 // ============================================================
-//Filter
-export async function fetchMoviesForFilter() {}
-
-// ============================================================
-//Pagination
-export async function fetchDiscoverMovies() {}
+export async function fetchMoviesForFilter(page = 1, genre = "") {
+  const genreParam = genre ? `&with_genres=${genre}` : "";
+  const response = await fetch(
+    `${BASE_URL}/discover/movie?with_original_language=en&page=${page}&sort_by=popularity.desc${genreParam}`,
+    { method: "GET", headers },
+  );
+  if (!response.ok) throw new Error("Failed to retrieve movies");
+  const data = await response.json();
+  return {
+    movies: data.results,
+    totalPages: data.total_pages,
+  };
+}
