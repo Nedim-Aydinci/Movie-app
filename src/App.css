@@ -10,11 +10,11 @@ a {
 .top-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
-}
+  /* gap: 25px;*/
+} 
 
 .trailer-area {
-  grid-column: 1 / -1;
+  grid-column: 1 ;
   width: 100%;
 }
 
@@ -56,5 +56,6 @@ a {
 @media (max-width: 600px) {
   .page-container {
     padding: 1rem;
+    
   }
 }

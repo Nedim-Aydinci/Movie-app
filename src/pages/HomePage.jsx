@@ -10,13 +10,8 @@ export default function HomePage({
 }) {
   return (
     <>
-      <div className="page-container">
-        <div className="top-section">
-          <div className="trailer-area">
-            <RandomTrailer />
-          </div>
-        </div>
-      </div>
+      <RandomTrailer key={currentPage} />
+
       <MovieFilter movies={movies} />
       <Pagination
         currentPage={currentPage}
