@@ -1,4 +1,19 @@
-//RandomMovie in Navbar
+/*This file handles all fetches, headers and authentication 
+for the project.
+The API key is retrieved from the .env file and is 
+never exposed in the code.
+Version 3 of TMDB's API
+*/
+const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
+
+const BASE_URL = "https://api.themoviedb.org/3";
+
+const headers = {
+  Authorization: `Bearer ${TMDB_TOKEN}`,
+  accept: "application/json",
+};
+
+// ============================================================
 export async function fetchRandomMovie() {
   //picks a random number and to get a page number
   const randomPage = Math.floor(Math.random() * 500) + 1;
@@ -20,34 +35,40 @@ export async function fetchRandomMovie() {
   return data.results[randomIndex];
 }
 
-//Search in Navbar
-export async function searchMovies(query) {
+// ============================================================
+/*used by MovieFilter.jsx (via SearchContext)
+Returns both the movie list and the total number of pages so that the 
+Pagination-component can display the correct number
+*/
+export async function searchMovies(query, page = 1) {
   const response = await fetch(
-    `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}`,
-    {
-      method: "GET",
-      headers,
-    },
+    `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&page=${page}`,
+    { method: "GET", headers },
   );
-
-  if (!response.ok) throw new Error("The search failed to retrieve movies");
-
+  if (!response.ok) throw new Error("Sökningen misslyckades");
   const data = await response.json();
-  //Updates the 12 videos to the ones the user has searched for
-  return data.results.slice(0, 12);
+  return {
+    movies: data.results,
+    totalPages: data.total_pages,
+  };
 }
 
+// ============================================================
 //FavoritesPage + MoviePage
 export async function fetchMovieById() {}
 
+// ============================================================
 //RandomTrailer
 export async function fetchPopularMovies() {}
 
+// ============================================================
 //RandomTrailer
 export async function fetchMovieTrailers() {}
 
+// ============================================================
 //Filter
 export async function fetchMoviesForFilter() {}
 
+// ============================================================
 //Pagination
 export async function fetchDiscoverMovies() {}
