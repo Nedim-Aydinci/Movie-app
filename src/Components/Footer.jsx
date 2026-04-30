@@ -26,7 +26,13 @@ function Footer() {
             <div className="footer-icons">
               <FaFacebook />
               <FaInstagram />
-              <FaGithub />
+              <a
+                href="https://github.com/Nedim-Aydinci/Movie-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
             </div>
           </div>
         </div>
