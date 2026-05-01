@@ -1,8 +1,6 @@
-/*This file handles all fetches, headers and authentication 
-for the project.
-The API key is retrieved from the .env file and is 
-never exposed in the code.
-Version 3 of TMDB's API
+/*This file handles all fetches, headers and authentication for the project.
+The API key is retrieved from the .env file and is never exposed in the code.
+This is Version 3 of TMDB's API URL-paths.
 */
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -36,11 +34,10 @@ export async function fetchRandomMovie() {
 }
 
 // ============================================================
-/*used by MovieFilter.jsx (via SearchContext)
-Returns both the movie list and the total number of pages so that the 
+/* Returns both the movie list and the total number of pages so that the 
 pagination-component can display the correct number
 */
-export async function searchMovies(query, page = 1) {
+export async function fetchSearchMovies(query, page = 1) {
   const response = await fetch(
     `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&page=${page}`,
     { method: "GET", headers },
