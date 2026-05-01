@@ -3,7 +3,7 @@ import "../Styles/MovieFilter.css";
 import MovieWrapper from "./MovieWrapper.jsx";
 import { fetchMoviesForFilter, fetchSearchMovies } from "../Api/api.js";
 import Pagination from "./Pagination.jsx";
-import { useSearchStore } from "../store/SearchStore.js";
+import useSearchStore from "../store/SearchStore.js";
 
 function MovieFilter() {
   const [sortBy, setSortBy] = useState("");
@@ -138,7 +138,7 @@ function MovieFilter() {
         {mode === "search" && (
           <p>
             Search results for "{query}" –{" "}
-            <button onClick={handleReset}>Clear search</button>
+            <button onClick={handleReset}>Clear</button>
           </p>
         )}
       </div>
