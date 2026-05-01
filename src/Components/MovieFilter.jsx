@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import "../Styles/MovieFilter.css";
 import MovieWrapper from "./MovieWrapper.jsx";
 import { fetchMoviesForFilter, fetchSearchMovies } from "../Api/api.js";
+import Pagination from "./Pagination.jsx";
+import { useSearchStore } from "../store/SearchStore.js";
 
 function MovieFilter() {
   const [sortBy, setSortBy] = useState("");
@@ -12,6 +14,7 @@ function MovieFilter() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [defaultMovies, setDefaultMovies] = useState([]);
+  const { query, setQuery, mode, setMode } = useSearchStore(); //Retrieves state and setters directly from the state store
 
   //delay when the user searches for movies
   //useRef from React saves a value between renders without triggering a new render
