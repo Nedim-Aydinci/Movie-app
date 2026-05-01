@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import "../Styles/RandomTrailer.css";
 import { fetchMovieTrailers, fetchPopularMovies } from "../Api/api.js";
 
-const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
-
 const RandomTrailer = () => {
   const [movie, setMovie] = useState(null);
   const [trailerKey, setTrailerKey] = useState(null);
