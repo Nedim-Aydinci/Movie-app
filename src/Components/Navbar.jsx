@@ -2,7 +2,7 @@ import { FaHeart, FaUser, FaDice } from "react-icons/fa";
 import "../Styles/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router";
-import useSearchStore from "../store/SearchStore.js";
+import useSearchStore from "../store/searchStore.js";
 
 function Navbar({ onReset }) {
   //Retrieves state and setters directly from the state store
