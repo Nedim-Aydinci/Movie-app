@@ -3,11 +3,15 @@ import star from "../assets/star.svg";
 import heart from "../assets/heart-red.svg";
 import heartFilled from "../assets/heart-red-filled.svg";
 import { useState } from "react";
-import { Link } from "react-router"
+import { Link } from "react-router";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-export default function MovieCard({ movie, onClick = undefined, onUnfavorite }) {
+export default function MovieCard({
+  movie,
+  onClick = undefined,
+  onUnfavorite,
+}) {
   //useState for saving "favorited" movies to localstorage, checking if it already exists, if it doesnt it adds it
   const [isFavorite, setIsFavorite] = useState(() => {
     const saved = localStorage.getItem("favorites");
@@ -33,7 +37,7 @@ export default function MovieCard({ movie, onClick = undefined, onUnfavorite }) 
     //toggle movie id in the favorites array
     if (isFavorite) {
       favorites = favorites.filter((id) => id !== movie.id);
-      onUnfavorite?.(movie.id); // tar bort från favorit sidan 
+      onUnfavorite?.(movie.id); // tar bort från favorit sidan
     } else {
       favorites.push(movie.id);
     }
@@ -45,7 +49,7 @@ export default function MovieCard({ movie, onClick = undefined, onUnfavorite }) 
 
   //saknade en / innan movie  {`/movie/${movie.id}`}
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card-link"> 
+    <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <article className="movie-card" onClick={onClick} role={"button"}>
         <div className="movie-poster-container">
           <img

@@ -41,7 +41,6 @@
 }
 
 /*Telefon*/
-
 @media (max-width: 600px) {
   .footer-container {
     flex-direction: column;
@@ -55,9 +54,5 @@
 
   .footer-trademark {
     justify-content: center;
-  }
-
-  .footer-icons {
-    margin-top: 1rem;
   }
 }
