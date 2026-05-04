@@ -6,8 +6,8 @@ const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 export default function MoviePage() {
 
-    const { id } = useParams()
-    const [movie, setMovie] = useState(null)
+    const { id } = useParams() //Hämtar filmID från URL
+    const [movie, setMovie] = useState(null) //Ingen film vald från början
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}`, {
@@ -22,7 +22,7 @@ export default function MoviePage() {
         .catch((error) => console.error("Error fetching movie", error))
     }, [id])
 
-    if(!movie) return <p>Laddar...</p>
+    if(!movie) return <p>Laddar...</p> //Visa laddningstext medan API-svaret hämtas, movie är null tills dess
     
     return (
         <>

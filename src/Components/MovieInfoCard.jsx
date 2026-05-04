@@ -19,7 +19,22 @@ export default function MovieInfoCard({ movie }) {
       </div>
       <div className="movie-info">
         <h1>{movie.title}</h1>
-        <p className="movie-info-date">Utgivningsdatum: {movie.release_date}</p>
+
+        <p className="genres">
+          {movie.genres.slice(0, 2).map((genre) => (
+            <span key={genre.id} className="genre-tag">
+              {genre.name}
+            </span> //Genres kommer i en array så därav mappar vi igenom de
+          ))}
+        </p>
+
+        <div className="date-and-runtime-wrapper">
+          <p className="movie-info-date">
+            Utgivningsdatum: {movie.release_date}
+          </p>
+          <p className="run-time">{movie.runtime} minutes</p>
+        </div>
+
         <p className="movie-info-overview">{movie.overview}</p>
 
         <div className="movie-info-stats">

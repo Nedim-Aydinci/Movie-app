@@ -6,7 +6,7 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
   color: #ffffff;
 }
@@ -43,10 +43,34 @@
   margin-bottom: 8px;
 }
 
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.genre-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #e0e0e0;
+}
+
+.date-and-runtime-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.run-time {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
 .movie-info-overview {
   line-height: 1.4;
   color: #e0e0e0;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .movie-info-stats {
