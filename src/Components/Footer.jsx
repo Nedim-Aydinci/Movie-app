@@ -1,5 +1,6 @@
-import "../Styles/Footer.css"
-import { FaInstagram, FaFacebook, FaGithub } from "react-icons/fa"
+import { Link } from "react-router";
+import "../Styles/Footer.css";
+import { FaInstagram, FaFacebook, FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -14,7 +15,9 @@ function Footer() {
 
           <div className="footer-middle">
             <p>About</p>
-            <p>Contact</p>
+            <Link to="contact">
+              <p>Contact</p>
+            </Link>
             <p>Help</p>
           </div>
 
@@ -23,7 +26,13 @@ function Footer() {
             <div className="footer-icons">
               <FaFacebook />
               <FaInstagram />
-              <FaGithub />
+              <a
+                href="https://github.com/Nedim-Aydinci/Movie-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
             </div>
           </div>
         </div>
