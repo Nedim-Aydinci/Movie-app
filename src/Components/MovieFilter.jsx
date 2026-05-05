@@ -126,7 +126,7 @@ function MovieFilter() {
               value={sortBy}
               onChange={(e) => setSortBy(event.target.value)}
             >
-              <option value="">Show all movies</option>
+              <option value="">Show All Movies</option>
               <option value="title">Title</option>
               <option value="releaseDate">Release Year</option>
               <option value="popularity">Rating</option>

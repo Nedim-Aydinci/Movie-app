@@ -31,3 +31,7 @@
 * {
   font-family: var(--font-main);
 }
+
+body {
+  background-color: rgb(112, 71, 112, 0.7);
+}

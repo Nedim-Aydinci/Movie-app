@@ -9,17 +9,18 @@
   padding: 0 1rem;
 }
 .movie-filter-controls label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 5px;
+  color: #2b2833;
 }
 .movie-filter-controls select {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 0.5rem;
-  border: 0.4px solid orange;
-  background-color: orange;
-  color: #2b2833;
+  border: 0.4px solid #2b2833;
+  background-color: #2b2833;
+  color: var(--text-main);
   font-size: 1rem;
   font-weight: 400;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -30,8 +31,8 @@
   max-width: 100%;
 }
 .movie-filter-controls option {
-  background-color: rgb(238, 182, 77);
-  color: #2b2833;
+  background-color: #2b2833;
+  color: white;
 }
 @media (max-width: 480px) {
   .movie-filter-controls {
