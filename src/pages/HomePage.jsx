@@ -1,4 +1,3 @@
-import Pagination from "../Components/Pagination";
 import RandomTrailer from "../Components/RandomTrailer";
 import MovieFilter from "../Components/MovieFilter";
 
@@ -10,19 +9,8 @@ export default function HomePage({
 }) {
   return (
     <>
-      <div className="page-container">
-        <div className="top-section">
-          <div className="trailer-area">
-            <RandomTrailer />
-          </div>
-        </div>
-      </div>
+      <RandomTrailer key={currentPage} />
       <MovieFilter movies={movies} />
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
     </>
   );
 }
