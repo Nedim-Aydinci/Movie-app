@@ -98,3 +98,13 @@ export async function fetchMoviesForFilter(page = 1, genre = "") {
     totalPages: data.total_pages,
   };
 }
+
+// ============================================================
+export async function fetchMovieCredits(id) {
+  const response = await fetch(`${BASE_URL}/movie/${id}/credits`, {
+    method: "GET",
+    headers,
+  });
+  if (!response.ok) throw new Error(`Failed to retrieve credits ${id}`);
+  return response.json();
+}
