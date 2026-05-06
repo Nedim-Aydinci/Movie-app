@@ -52,10 +52,14 @@ export async function fetchSearchMovies(query, page = 1) {
 
 // ============================================================
 export async function fetchMovieById(id) {
-  const response = await fetch(`${BASE_URL}/movie/${id}`, {
-    method: "GET",
-    headers,
-  });
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?
+  append_to_response=credits`,
+    {
+      method: "GET",
+      headers,
+    },
+  );
   if (!response.ok) throw new Error(`Failed to retrieve movie ${id}`);
   return response.json();
 }
@@ -97,14 +101,4 @@ export async function fetchMoviesForFilter(page = 1, genre = "") {
     movies: data.results,
     totalPages: data.total_pages,
   };
-}
-
-// ============================================================
-export async function fetchMovieCredits(id) {
-  const response = await fetch(`${BASE_URL}/movie/${id}/credits`, {
-    method: "GET",
-    headers,
-  });
-  if (!response.ok) throw new Error(`Failed to retrieve credits ${id}`);
-  return response.json();
 }
