@@ -2,49 +2,23 @@ import "../Styles/MovieCard.css";
 import star from "../assets/star.svg";
 import heart from "../assets/heart-red.svg";
 import heartFilled from "../assets/heart-red-filled.svg";
-import { useState } from "react";
 import { Link } from "react-router";
+import { useMovieFetch } from "../Stores/useMovieFetch";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-export default function MovieCard({
-  movie,
-  onClick = undefined,
-  onUnfavorite,
-}) {
-  //useState for saving "favorited" movies to localstorage, checking if it already exists, if it doesnt it adds it
-  const [isFavorite, setIsFavorite] = useState(() => {
-    const saved = localStorage.getItem("favorites");
-
-    if (!saved) return false;
-
-    const favorites = JSON.parse(saved);
-
-    return favorites.includes(movie.id);
-  });
+export default function MovieCard({ movie, onClick = undefined }) {
+  const { toggleFavorite, favoriteMovies } = useMovieFetch()
+  
+  const isFavorite = favoriteMovies.some(m => m.id === movie.id);
 
   const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
 
-  const toggleFavorite = (e) => {
+  const handleToggle = (e) => {
     //when favorite is clicked it only clicks on favorite and not the whole card
     e.stopPropagation();
     e.preventDefault(); //förhindrar att länken aktiveras när man klickar på favoritknappen
-
-    const saved = localStorage.getItem("favorites");
-
-    let favorites = saved ? JSON.parse(saved) : [];
-
-    //toggle movie id in the favorites array
-    if (isFavorite) {
-      favorites = favorites.filter((id) => id !== movie.id);
-      onUnfavorite?.(movie.id); // tar bort från favorit sidan
-    } else {
-      favorites.push(movie.id);
-    }
-
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-
-    setIsFavorite(!isFavorite);
+    toggleFavorite(movie)
   };
 
   //saknade en / innan movie  {`/movie/${movie.id}`}
@@ -63,7 +37,7 @@ export default function MovieCard({
             <span>{movie.vote_average.toFixed(1)}</span>
           </div>
           <div className="movie-favorite">
-            <button className="favorite-btn" onClick={toggleFavorite}>
+            <button className="favorite-btn" onClick={handleToggle}>
               <img
                 src={isFavorite ? heartFilled : heart}
                 alt="favorite"

@@ -1,51 +1,28 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import "../Styles/RandomTrailer.css";
-import { fetchMovieTrailers, fetchPopularMovies } from "../Api/api.js";
+import { useMovieFetch } from "../Stores/useMovieFetch.js";
 
 const RandomTrailer = () => {
-  const [movie, setMovie] = useState(null);
-  const [trailerKey, setTrailerKey] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { selectedTrailer, randomTrailer, isLoading, error } = useMovieFetch()
 
   useEffect(() => {
-    fetchPopularMovies()
-      .then((results) => {
-        //random selection
-        //we generate array length amount integer by using "math.floor"
-        const randomIndex = Math.floor(Math.random() * results.length);
-        setMovie(results[randomIndex]);
-      })
-      .catch(() => setError("Something went wrong, failed to get movies"));
-  }, []);
-
-  useEffect(() => {
-    //early return if no movie was found
-    if (!movie) return;
-    fetchMovieTrailers(movie.id)
-      .then((results) => {
-        const trailer = results.find(
-          (video) => video.type === "Trailer" && video.site === "YouTube",
-        );
-        setTrailerKey(trailer?.key);
-      })
-      .catch(() => setError("Kunde inte hämta trailer."))
-      .finally(() => setLoading(false));
-  }, [movie]);
+    randomTrailer()
+  }, [])
 
   //loading and error state messages
-  if (loading) return <p>Loading trailer...</p>;
+  if (isLoading) return <p>Loading trailer...</p>;
+  if (!selectedTrailer) return null;
   if (error) return <p>{error}</p>;
 
   return (
     <div className="trailer-section">
-      <h2 className="trailer-title">{movie?.title}</h2>
+      <h2 className="trailer-title">{selectedTrailer?.title}</h2>
 
-      {trailerKey ? (
+      {selectedTrailer?.trailerKey ? (
         <div className="trailer-container">
           <iframe
-            src={`https://www.youtube.com/embed/${trailerKey}`}
+            src={`https://www.youtube.com/embed/${selectedTrailer.trailerKey}`}
             title="Trailer"
             allowFullScreen
           />
