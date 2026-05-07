@@ -12,6 +12,7 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffff;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

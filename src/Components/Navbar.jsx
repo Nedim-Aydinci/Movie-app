@@ -34,9 +34,12 @@ function Navbar({ onReset }) {
             </h1>
           </Link>
 
-          <Link to="RandomMovie" className="random-movie">
-            <FaDice />
-          </Link>
+          <div className="dice-wrapper">
+            <Link to="RandomMovie" className="random-movie">
+              <FaDice />
+            </Link>
+            <span className="dice-text">Roll the dice...</span>
+          </div>
 
           <div className="nav-right">
             <input
