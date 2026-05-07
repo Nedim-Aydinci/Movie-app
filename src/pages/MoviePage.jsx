@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import MovieInfoCard from "../Components/MovieInfoCard";
+import NotFound from "./NotFoundPage";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -34,6 +35,7 @@ export default function MoviePage() {
   }, [id]);
 
   if (!movie || !credits) return <p>Laddar...</p>; //Visa laddningstext medan API-svaret hämtas, movie är null tills dess
+  if (movie?.success === false) return <NotFound />;
 
   return (
     <>
