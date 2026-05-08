@@ -53,8 +53,7 @@ export async function fetchSearchMovies(query, page = 1) {
 // ============================================================
 export async function fetchMovieById(id) {
   const response = await fetch(
-    `${BASE_URL}/movie/${id}?
-  append_to_response=credits`,
+    `${BASE_URL}/movie/${id}?append_to_response=credits`,
     {
       method: "GET",
       headers,
