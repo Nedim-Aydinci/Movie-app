@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../Styles/ContactForm.css";
 import { Link } from "react-router";
 
-//Skapa ett tomt formulär som ett objekt
+//Create an empty form as an object
 const emptyForm = {
   name: "",
   email: "",
@@ -12,8 +12,8 @@ const emptyForm = {
 };
 
 function ContactForm() {
-  const [form, setForm] = useState(emptyForm); //alla input sparas i en state
-  const [error, setError] = useState({}); //vid error kan vi tömma alla input
+  const [form, setForm] = useState(emptyForm); //all inputs are saved in a state
+  const [error, setError] = useState({}); //in case of error we can delete all input
 
   const validate = () => {
     const newError = {};
@@ -51,7 +51,7 @@ function ContactForm() {
     }
   };
 
-  //Förhindra att sidan laddas om, vid felaktig input
+  //Prevent the page from reloading, in case of incorrect input
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -64,7 +64,7 @@ function ContactForm() {
       return;
     }
 
-    //Om allt är okej kan formuläret uppdateras med hjälp av state
+    //If ok, the form can be updated using state
     setForm(emptyForm);
     setError({});
 
@@ -82,9 +82,9 @@ function ContactForm() {
             name="name"
             type="text"
             placeholder="Your name"
-            className={error.name ? "error" : ""} //om input saknas visas felmeddelande
-            value={form.name} //controlled component, denna kontrollerar state
-            onChange={handleChange} //uppdaterar inputfältet när det ändras
+            className={error.name ? "error" : ""} //if input is missing, error message is displayed
+            value={form.name} //controlled component, this controls state
+            onChange={handleChange} //updates the input field when it changes
           />
           {error.name && <p className="error-message">{error.name}</p>}
         </div>
@@ -120,7 +120,7 @@ function ContactForm() {
               id="agree"
               name="agree"
               type="checkbox"
-              checked={form.agree} //checked istället för value för att det är en checkbox
+              checked={form.agree} //"checked" instead of value because it's a checkbox
               onChange={handleChange}
             />
             <label htmlFor="agree">I accept the terms</label>
@@ -138,7 +138,7 @@ function ContactForm() {
             />
             <label htmlFor="newsletter">Subscribe to our newsletter</label>
           </div>
-          {/*Valfritt att fylla i checkbox, inget felmeddelande behövs*/}
+          {/*Optional to fill in checkbox, no error message needed*/}
         </div>
         <button type="submit" className="submit-btn">
           Send
