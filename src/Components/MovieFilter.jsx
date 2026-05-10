@@ -106,7 +106,7 @@ function MovieFilter() {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option value="">Show all movies</option>
+              <option value="">Show All Movies</option>
               <option value="title">Title</option>
               <option value="releaseDate">Release Year</option>
               <option value="popularity">Rating</option>
@@ -116,9 +116,9 @@ function MovieFilter() {
 
         {/*In search mode search term and a reset button is displayed*/}
         {mode === "search" && (
-          <p>
+          <p id="clear-text">
             Search results for "{query}" –{" "}
-            <button onClick={handleReset}>Clear</button>
+            <button id="clear-btn" onClick={handleReset}>Clear</button>
           </p>
         )}
       </div>

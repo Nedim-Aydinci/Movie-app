@@ -37,14 +37,46 @@ a {
   color: inherit;
 }
 
+.dice-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
 .random-movie {
   font-size: 2rem;
   color: white;
   transition: transform 0.2s;
+  display: inline-flex;
+  align-items: center;
 }
 
 .random-movie:hover {
   transform: rotate(90deg) scale(1.2);
+}
+
+.dice-text {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2b2833;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.random-movie:hover + .dice-text {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*Telefon*/

@@ -2,6 +2,7 @@
   text-align: center;
   margin: 2rem 0 1.5rem;
   font-size: clamp(2rem, 4vw, 3.5rem); /*anpassar skalning efter skärmstorlek*/
+  color: var(--text-main);
 }
 
 .form-container {
@@ -49,9 +50,9 @@
 
 .form-input input:focus-visible,
 .form-input textarea:focus-visible {
-  outline: 3px solid #f1b44c;
+  outline: 3px solid green;
   outline-offset: 2px;
-  border-color: #f1b44c;
+  border-color: var(--border-color-hv);
 }
 
 .checkbox-wrapper {
@@ -70,7 +71,7 @@
 .checkbox input {
   width: auto;
   margin: 0;
-  accent-color: orange;
+  accent-color: green;
 }
 
 .checkbox label {
@@ -80,10 +81,10 @@
 .submit-btn {
   padding: 0.8rem 1.1rem;
   border-radius: 0.6rem;
-  border: 1px solid #000;
-  background-color: orange;
+  border: 1px solid #132718;
+  background-color: rgb(90, 173, 90);
   width: min(100%, 9rem);
-  color: #2b2833;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
   align-self: center;
@@ -94,7 +95,7 @@
 }
 
 .error-message {
-  color: #ff8b8b;
+  color: rgb(243, 44, 44);
   font-size: 0.9rem;
   margin: 0.25rem 0 0;
   width: min(100%, 26rem);

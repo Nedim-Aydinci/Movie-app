@@ -14,7 +14,7 @@ export default function FavoritesPage() {
 
   if (favoriteMovies.length === 0) {
     return (
-      <p style={{ textAlign: "center", marginTop: "2rem" }}>
+      <p style={{ textAlign: "center", marginTop: "2rem", color: "white" }}>
         Inga favoriter ännu.
       </p>
     );

@@ -5,13 +5,14 @@
 }
 
 .random-btn {
-  background: linear-gradient(to bottom, #292929, #000000);
+  background: var(--primary);
   border: none;
   padding: 10px 10px;
   border-radius: 7px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffff;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

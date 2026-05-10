@@ -1,14 +1,15 @@
 :root {
   --primary: #2b2833;
-  --accent: ;
+  --primary-dark: #18161d;
+  --accent: #18161d;
 
   --bg-color: #2b2833;
-  --gradient: linear-gradient(to bottom, #292929, #000000);
+  --gradient: linear-gradient(to bottom, #4b4658, #15141a);
 
   --font-main: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
   --text-main: #ffff;
-  --text-muted: ;
+  --text-muted: #635f6d;
 
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
@@ -21,8 +22,8 @@
   --radius-md: 24px;
   --radius-lg: 48px;
 
-  --border: 1px solid rgba(255, 255, 255, 0.1);
-  --border-color-hv: rgba(255, 255, 255, 0.3);
+  --border: 1px solid rgba(49, 40, 63, 0.979);
+  --border-color-hv: rgba(72, 59, 92, 0.979);
 
   --bs-sm: 0 10px 20px rgba(0, 0, 0, 0.4);
   --bs-md: 0 15px 35px rgba(0, 0, 0, 0.4);
@@ -31,3 +32,8 @@
 * {
   font-family: var(--font-main);
 }
+
+body {
+  background-color: #18161d;
+}
+/*rgb(112, 71, 112, 0.7)*/
