@@ -21,6 +21,8 @@ export const useMovieFetch = create((set) => ({
   trailerKey: "",
   favoriteMovies: [],
 
+  setCurrentPage: (page) => set({currentPage: page}),
+
   searchMovies: async (query, page = 1) => {
     set({ isLoading: true, error: null, currentQuery: query });
     try {
@@ -37,13 +39,12 @@ export const useMovieFetch = create((set) => ({
   },
 
   filterMovies: async (page = 1, genre = "") => {
-    set({ isLoading: true, error: null });
+    set({ isLoading: true, error: null, currentPage: page});
     try {
-      const data = await fetchMoviesForFilter(genre, page);
+      const data = await fetchMoviesForFilter(page, genre);
       set({
         movies: data.movies,
         totalPages: data.totalPages,
-        currentPage: page,
         isLoading: false,
       });
     } catch (err) {

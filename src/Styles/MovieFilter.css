@@ -1,3 +1,7 @@
+.movie-filter-container {
+  min-height: 1000px;
+}
+
 .movie-filter-controls {
   display: flex;
   align-items: center;

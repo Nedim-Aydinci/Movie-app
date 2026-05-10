@@ -5,6 +5,8 @@ import MovieWrapper from "./MovieWrapper";
 //adjustment of page amount
 const WINDOW_SIZE = 10;
 
+
+
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   const getPageNumbers = () => {
     //window calculation
@@ -31,7 +33,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
     <div className="pagination">
       <button
         className="pagination-nav"
-        onClick={() => setCurrentPage((p) => p - 1)}
+        onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Prev
@@ -48,7 +50,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       ))}
       <button
         className="pagination-nav"
-        onClick={() => setCurrentPage((p) => p + 1)}
+        onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         Next

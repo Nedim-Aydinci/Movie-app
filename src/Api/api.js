@@ -111,9 +111,10 @@ export async function fetchRandomTrailer() {
 
 // ============================================================
 export async function fetchMoviesForFilter(page = 1, genre = "") {
+  const currentPage = page || 1
   const genreParam = genre ? `&with_genres=${genre}` : "";
   const response = await fetch(
-    `${BASE_URL}/discover/movie?with_original_language=en&page=${page}&sort_by=popularity.desc${genreParam}`,
+    `${BASE_URL}/discover/movie?with_original_language=en&page=${currentPage}&sort_by=popularity.desc${genreParam}`,
     { method: "GET", headers },
   );
   if (!response.ok) throw new Error("Failed to retrieve movies");
