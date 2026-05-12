@@ -1,19 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import "../Styles/MovieFilter.css";
 import MovieWrapper from "./MovieWrapper.jsx";
-import { fetchMoviesForFilter, fetchSearchMovies } from "../Api/api.js";
 import Pagination from "./Pagination.jsx";
-import useSearchStore from "../store/useSearchStore.js";
+import useSearchStore from "../Stores/useSearchStore.js";
+import { useMovieFetch } from "../Stores/useMovieFetch.js";
 
 function MovieFilter() {
   const [sortBy, setSortBy] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [defaultMovies, setDefaultMovies] = useState([]);
+  const { movies, isLoading, error, totalPages, currentPage, setCurrentPage, searchMovies, filterMovies } = useMovieFetch()
   const { query, setQuery, mode, setMode } = useSearchStore(); //Retrieves state and setters directly from the state store
 
   //delay when the user searches for movies
@@ -30,46 +25,30 @@ function MovieFilter() {
     searchTimeout.current = setTimeout(() => {
       setFilterGenre("");
       setSortBy("");
-      setLoading(true);
-      setError(null);
-      fetchSearchMovies(query, currentPage)
-        .then((data) => {
-          setMovies(data.movies);
-          setTotalPages(data.totalPages);
-        })
-        .catch(() => setError("Failed to retrieve movies"))
-        .finally(() => setLoading(false));
+      searchMovies(query, currentPage)
     }, 500);
 
     //no timeout runs in the background after the component disappears
     return () => clearTimeout(searchTimeout.current);
-  }, [mode, query, currentPage]);
+  }, [mode, query, currentPage, searchMovies]);
 
   //"mode-browse" is activated when the user uses the sort & filter function
   useEffect(() => {
     if (mode !== "browse") return;
-    setLoading(true);
-    setError(null);
-    fetchMoviesForFilter(currentPage, filterGenre)
-      .then((data) => {
-        setMovies(data.movies);
-        setDefaultMovies(data.movies);
-        setTotalPages(data.totalPages);
-      })
-      .catch(() => setError("Failed to retrieve movies"))
-      .finally(() => setLoading(false));
-  }, [currentPage, mode, filterGenre]);
+    filterMovies(currentPage, filterGenre)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage, mode, filterGenre, filterMovies]);
 
   //Resets all filters and switches back to browse mode.
   //Called, when the user clicks "Clear search".
   const handleReset = () => {
-    setMovies(defaultMovies);
     setMode("browse");
     setQuery("");
     setFilterGenre("");
     setSortBy("");
-    setCurrentPage(1);
   };
+
+  console.log("Filmer skickas till Wrapper:", movies);
 
   /*Genre filtering is handled by TMDB's API via the filterGenre parameter,
   the API returns already filtered movies, which means we don't need to filter 
@@ -79,7 +58,8 @@ function MovieFilter() {
       return a.original_title.localeCompare(b.original_title);
     if (sortBy === "releaseDate")
       return new Date(a.release_date) - new Date(b.release_date);
-    if (sortBy === "popularity") return b.popularity - a.popularity;
+    if (sortBy === "popularity") return b.vote_average - a.vote_average;
+    
     return 0;
   });
 
@@ -97,7 +77,7 @@ function MovieFilter() {
               value={filterGenre}
               onChange={(e) => {
                 setFilterGenre(e.target.value);
-                setCurrentPage(1); //Reset to page 1 when new genre selection is made
+                setCurrentPage(1)
               }}
             >
               {/*value is linked to a genre in the TMDB API.  */}
@@ -124,7 +104,7 @@ function MovieFilter() {
             <select
               id="filter-select"
               value={sortBy}
-              onChange={(e) => setSortBy(event.target.value)}
+              onChange={(e) => setSortBy(e.target.value)}
             >
               <option value="">Show All Movies</option>
               <option value="title">Title</option>
@@ -136,21 +116,22 @@ function MovieFilter() {
 
         {/*In search mode search term and a reset button is displayed*/}
         {mode === "search" && (
-          <p>
+          <p id="clear-text">
             Search results for "{query}" –{" "}
-            <button onClick={handleReset}>Clear</button>
+            <button id="clear-btn" onClick={handleReset}>Clear</button>
           </p>
         )}
       </div>
 
-      {loading ? <p>Loading...</p> : <MovieWrapper movies={sortedMovies} />}
+      <MovieWrapper movies={sortedMovies} />
+      {isLoading && <div className="spinner">Laddar nya filmer...</div>}
 
       {/* Pagination only appears in browse mode, not when searching */}
       {mode === "browse" && (
         <Pagination
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
           totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
         />
       )}
     </div>

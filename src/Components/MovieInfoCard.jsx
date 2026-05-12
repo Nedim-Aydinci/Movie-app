@@ -5,6 +5,11 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 export default function MovieInfoCard({ movie, credits }) {
   //poster path because movie.poster_path only gives the specific img and not the whole url
+
+  if (!movie || !credits || !credits.crew || !credits.cast) {
+    return <div className="loading">Hämtar information...</div>;
+  }
+
   const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
   const backdropPath = `${IMAGE_BASE_URL}${movie.backdrop_path}`;
 
@@ -23,11 +28,11 @@ export default function MovieInfoCard({ movie, credits }) {
       <div className="movie-info">
         <h1>{movie.title}</h1>
 
-        <p className="genres">
+       <p className="genres">
           {movie.genres.slice(0, 2).map((genre) => (
             <span key={genre.id} className="tag">
               {genre.name}
-            </span> //Genres kommer i en array så därav mappar vi igenom de
+            </span>
           ))}
         </p>
 

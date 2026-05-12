@@ -29,8 +29,10 @@ export async function fetchRandomMovie() {
   const data = await response.json();
   //getting a random number depending on how much data we get
   const randomIndex = Math.floor(Math.random() * data.results.length);
-  //returns the movie that the random number was on
-  return data.results[randomIndex];
+  //saves the movie that the random number was on
+  const randomMovieI = data.results[randomIndex];
+
+  return await fetchMovieById(randomMovieI.id);
 }
 
 // ============================================================
@@ -87,11 +89,32 @@ export async function fetchMovieTrailers(movieId) {
   return data.results;
 }
 
+export async function fetchRandomTrailer() {
+  const response = await fetch(`${BASE_URL}/movie/popular`, {
+    method: "GET",
+    headers,
+  });
+  const listData = await response.json();
+
+  const randomIndex = Math.floor(Math.random() * listData.results.length);
+  const randomMovie = listData.results[randomIndex];
+  const trailerResponse = await fetch(
+    `${BASE_URL}/movie/${randomMovie.id}?append_to_response=videos`,
+    {
+      method: "GET",
+      headers,
+    },
+  );
+  if (!trailerResponse.ok) throw new Error("Failed to retrieve trailer");
+  return await trailerResponse.json();
+}
+
 // ============================================================
 export async function fetchMoviesForFilter(page = 1, genre = "") {
+  const currentPage = page || 1
   const genreParam = genre ? `&with_genres=${genre}` : "";
   const response = await fetch(
-    `${BASE_URL}/discover/movie?with_original_language=en&page=${page}&sort_by=popularity.desc${genreParam}`,
+    `${BASE_URL}/discover/movie?with_original_language=en&page=${currentPage}&sort_by=popularity.desc${genreParam}`,
     { method: "GET", headers },
   );
   if (!response.ok) throw new Error("Failed to retrieve movies");

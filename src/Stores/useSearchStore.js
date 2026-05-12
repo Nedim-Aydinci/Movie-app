@@ -1,5 +1,5 @@
-//import hook for global store
 import { create } from "zustand";
+//import hook for global store
 
 //"set" in Zustand updates the state
 //query and mode are states from search and filtering

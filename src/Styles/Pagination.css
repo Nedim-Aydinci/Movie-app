@@ -5,12 +5,14 @@
   gap: 8px;
   margin: 20px o;
   flex-wrap: wrap;
+  padding-bottom: 15px;
 }
 
 .pagination button {
   padding: 8px 14px;
-  border: 1px solid #ddd;
-  background-color: white;
+  color: var(--text-main);
+  border: none;
+  background-color: var(--primary);
   cursor: pointer;
   border-radius: 6px;
   font-size: 14px;
@@ -18,16 +20,15 @@
 }
 
 .pagination button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--primary-dark);
 }
 .pagination button:disabled {
-  background-color: #eee;
+  background-color: var(--primary-dark);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.pagination button:active {
-  background-color: #007bff;
+.pagination button.active {
+  background-color: var(--primary-dark);
   color: white;
-  border-color: #007bff;
 }

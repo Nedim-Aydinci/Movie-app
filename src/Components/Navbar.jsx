@@ -1,8 +1,7 @@
 import { FaHeart, FaUser, FaDice } from "react-icons/fa";
 import "../Styles/Navbar.css";
-import { useState } from "react";
 import { Link } from "react-router";
-import useSearchStore from "../store/useSearchStore.js";
+import useSearchStore from "../Stores/useSearchStore.js";
 
 function Navbar({ onReset }) {
   //Retrieves state and setters directly from the state store
@@ -45,9 +44,9 @@ function Navbar({ onReset }) {
             <input
               className="search-bar"
               placeholder="Search for movies..."
-              value={query} //Kontrollera vad som visas i fältet
-              onChange={(e) => setQuery(e.target.value)} //Uppdatera query vid varje knapptryckning
-              onKeyDown={handleSearch} //På varje knapptryckning körs handleSearch funktionen
+              value={query} //controls the value of the input
+              onChange={(e) => setQuery(e.target.value)} //updates the value of the input
+              onKeyDown={handleSearch} //on every keypress, calls the handleSearch function
             />
 
             <div className="nav-icons">

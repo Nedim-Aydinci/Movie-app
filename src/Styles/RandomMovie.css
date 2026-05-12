@@ -5,7 +5,7 @@
 }
 
 .random-btn {
-  background: linear-gradient(to bottom, #292929, #000000);
+  background: var(--primary);
   border: none;
   padding: 10px 10px;
   border-radius: 7px;

@@ -1,3 +1,7 @@
+.movie-filter-container {
+  min-height: 1000px;
+}
+
 .movie-filter-controls {
   display: flex;
   align-items: center;
@@ -13,7 +17,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 5px;
-  color: #2b2833;
+  color: var(--text-muted);
 }
 .movie-filter-controls select {
   padding: 0.4rem 0.5rem;
@@ -34,6 +38,20 @@
   background-color: #2b2833;
   color: white;
 }
+
+#clear-text {
+  color: var(--text-muted)
+}
+
+#clear-btn {
+  background-color: var(--primary);
+  border: none;
+  color: var(--text-main);
+  padding: 5px 10px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
 @media (max-width: 480px) {
   .movie-filter-controls {
     flex-direction: column;

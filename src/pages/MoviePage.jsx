@@ -1,29 +1,25 @@
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MovieInfoCard from "../Components/MovieInfoCard";
+import { useMovieFetch } from "../Stores/useMovieFetch";
 import NotFound from "./NotFoundPage";
-import { fetchMovieById } from "../Api/api.js";
+
+const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 export default function MoviePage() {
-  const { id } = useParams(); //Hämtar filmID från URL
-  const [movie, setMovie] = useState(null); //Ingen film vald från början
-  const [credits, setCredits] = useState(null); //Regissör och skådespelare
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const { id } = useParams(); //Get id from url
+  const { selectedMovie, movieById, isLoading} = useMovieFetch()
+  
   useEffect(() => {
-    fetchMovieById(id)
-      .then((data) => setMovie(data))
-      .catch(() => setError("Failed to retrieve movie"))
-      .finally(() => setLoading(false));
-  }, [id]);
+    movieById(id);
+  }, [id, movieById])
 
-  if (!movie || !credits) return <p>Laddar...</p>; //Visa laddningstext medan API-svaret hämtas, movie är null tills dess
-  if (movie?.success === false) return <NotFound />;
+  if (!selectedMovie|| isLoading) return <p>Laddar...</p>;
+  if (selectedMovie?.success === false) return <NotFound />; //show not found page if movie is not found
 
   return (
     <>
-      <MovieInfoCard movie={movie} credits={credits} />
+      <MovieInfoCard movie={selectedMovie} credits={selectedMovie.credits} />
     </>
   );
 }

@@ -7,8 +7,14 @@ import MoviePage from "./pages/MoviePage";
 import NotFound from "./pages/NotFoundPage";
 import Layout from "./Components/Layout";
 import ContactFormPage from "./pages/ContactFormPage";
+import { useMovieFetch } from "./Stores/useMovieFetch";
+import { useEffect } from "react";
 
 const App = () => {
+  const fetchFavorites = useMovieFetch((state) => state.fetchFavorites);
+  useEffect(() => {
+    fetchFavorites();
+  }, [fetchFavorites]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
