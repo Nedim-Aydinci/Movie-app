@@ -7,7 +7,7 @@ import NotFound from "./NotFoundPage";
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 export default function MoviePage() {
-  const { id } = useParams(); //Hämtar filmID från URL
+  const { id } = useParams(); //Get id from url
   const { selectedMovie, movieById, isLoading} = useMovieFetch()
   
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function MoviePage() {
   }, [id, movieById])
 
   if (!selectedMovie|| isLoading) return <p>Laddar...</p>;
-  if (selectedMovie?.success === false) return <NotFound />; //Visa laddningstext medan API-svaret hämtas, movie är null tills dess
+  if (selectedMovie?.success === false) return <NotFound />; //show not found page if movie is not found
 
   return (
     <>

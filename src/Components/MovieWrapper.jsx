@@ -6,7 +6,7 @@ export default function MovieWrapper({ movies = [], onUnfavorite }) {
     <section className="movie-wrapper">
       {/*maps through all movies from id and create a movie card for each one */}
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} onUnfavorite={onUnfavorite} /> //la till onUnfavorite={onUnfavorite}
+        <MovieCard key={movie.id} movie={movie} onUnfavorite={onUnfavorite} />
       ))}
     </section>
   );

@@ -17,11 +17,10 @@ export default function MovieCard({ movie, onClick = undefined }) {
   const handleToggle = (e) => {
     //when favorite is clicked it only clicks on favorite and not the whole card
     e.stopPropagation();
-    e.preventDefault(); //förhindrar att länken aktiveras när man klickar på favoritknappen
+    e.preventDefault(); //prevent the page from reloading
     toggleFavorite(movie)
   };
 
-  //saknade en / innan movie  {`/movie/${movie.id}`}
   return (
     <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <article className="movie-card" onClick={onClick} role={"button"}>

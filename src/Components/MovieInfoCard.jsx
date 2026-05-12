@@ -32,7 +32,7 @@ export default function MovieInfoCard({ movie, credits }) {
           {movie.genres.slice(0, 2).map((genre) => (
             <span key={genre.id} className="tag">
               {genre.name}
-            </span> //Genres kommer i en array så därav mappar vi igenom de
+            </span>
           ))}
         </p>
 

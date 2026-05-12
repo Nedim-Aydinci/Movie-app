@@ -4,11 +4,11 @@ import "../Styles/RandomTrailer.css";
 import { useMovieFetch } from "../Stores/useMovieFetch.js";
 
 const RandomTrailer = () => {
-  const { selectedTrailer, randomTrailer, isLoading, error } = useMovieFetch()
+  const { currentPage, selectedTrailer, randomTrailer, isLoading, error } = useMovieFetch()
 
   useEffect(() => {
     randomTrailer()
-  }, [])
+  }, [currentPage])
 
   //loading and error state messages
   if (isLoading) return <p>Loading trailer...</p>;
