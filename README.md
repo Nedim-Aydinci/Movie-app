@@ -1,18 +1,29 @@
-# React + Vite
+# Movie Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application for discovering and exploring movies. Users can search, filter, and save their favourite films — powered by the TMDB API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Search:** Find movies using free-text search with built-in debounce to optimise API calls.
+- **Filter & Sort:** Filter movies by genre and sort by popularity, title or release date.
+- **Favourites:** Save and manage your favourite movies — persisted in the browser via `localStorage`.
+- **Detail Pages:** View in-depth information about each film, including rating, cast, and official YouTube trailers.
+- **Responsive Design:** Fully adapted for mobile, tablet and desktop.
+- **Pagination:** Browse thousands of movies with smooth page navigation.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category         | Technology                                                                |
+| ---------------- | ------------------------------------------------------------------------- |
+| Frontend         | [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)            |
+| State Management | [Zustand](https://github.com/pmndrs/zustand)                              |
+| Routing          | [React Router](https://reactrouter.com/)                                  |
+| API              | [The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api) |
+| Styling          | CSS3 (Flexbox & Grid)                                                     |
+| Icons            | [Lucide React](https://lucide.dev/)                                       |
 
-### to run navbar install following: npm install react-icons
+---
