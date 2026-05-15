@@ -27,3 +27,50 @@ A responsive React application for discovering and exploring movies. Users can s
 | Icons            | [Lucide React](https://lucide.dev/)                                       |
 
 ---
+
+## Requirements
+
+Make sure you have the following installed before proceeding:
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (included with Node.js)
+- A code editor — [VS Code](https://code.visualstudio.com/) is recommended
+- A **TMDB API key**
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Nedim-Aydinci/Movie-app.git
+cd movie-app
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+npm install react-icons
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root of the project and add your TMDB API key:
+
+```env
+VITE_TMDB_API_KEY=your_api_key_here
+```
+
+> **Note:** The API key will be provided separately
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` by default.
+
+---
