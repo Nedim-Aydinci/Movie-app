@@ -2,37 +2,28 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 25px;
-  grid-row-gap: 25px;
-
+  gap: 25px;
   justify-content: center;
   align-items: center;
-  padding: 2rem 27rem;
-}
-
-@media (max-width: 1600px) {
-  .movie-wrapper {
-    padding: 2rem 20rem;
-  }
+  padding: 2rem clamp(1rem, 10vw, 27rem);
 }
 
 @media (max-width: 1100px) {
   .movie-wrapper {
-    padding: 2rem 15rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 800px) {
   .movie-wrapper {
-    padding: 2rem 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .movie-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    padding: 2rem 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    padding: 1rem;
   }
 }
