@@ -1,14 +1,16 @@
 import React from "react";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import "../Styles/RandomTrailer.css";
 import { useMovieFetch } from "../Stores/useMovieFetch.js";
 
 const RandomTrailer = () => {
-  const { currentPage, selectedTrailer, randomTrailer, isLoading, error } = useMovieFetch()
+  const { currentPage, selectedTrailer, randomTrailer, isLoading, error } =
+    useMovieFetch();
 
+  //everytime the currentPage changes, it will run the randomTrailer function
   useEffect(() => {
-    randomTrailer()
-  }, [currentPage])
+    randomTrailer();
+  }, [currentPage]);
 
   //loading and error state messages
   if (isLoading) return <p>Loading trailer...</p>;

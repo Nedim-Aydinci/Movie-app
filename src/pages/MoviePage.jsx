@@ -9,13 +9,14 @@ const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 export default function MoviePage() {
   const { id } = useParams(); //Get id from url
-  const { selectedMovie, movieById, isLoading} = useMovieFetch()
-  
+  const { selectedMovie, movieById, isLoading } = useMovieFetch();
+
+  //Fetch movie when id changes and when movieById changes
   useEffect(() => {
     movieById(id);
-  }, [id, movieById])
+  }, [id, movieById]);
 
-  if (!selectedMovie|| isLoading) return <p>Laddar...</p>;
+  if (!selectedMovie || isLoading) return <p>Laddar...</p>;
   if (selectedMovie?.success === false) return <NotFound />; //show not found page if movie is not found
 
   return (

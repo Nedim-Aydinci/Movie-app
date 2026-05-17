@@ -8,7 +8,16 @@ import { useMovieFetch } from "../Stores/useMovieFetch.js";
 function MovieFilter() {
   const [sortBy, setSortBy] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
-  const { movies, isLoading, error, totalPages, currentPage, setCurrentPage, searchMovies, filterMovies } = useMovieFetch()
+  const {
+    movies,
+    isLoading,
+    error,
+    totalPages,
+    currentPage,
+    setCurrentPage,
+    searchMovies,
+    filterMovies,
+  } = useMovieFetch();
   const { query, setQuery, mode, setMode } = useSearchStore(); //Retrieves state and setters directly from the state store
 
   //delay when the user searches for movies
@@ -25,7 +34,7 @@ function MovieFilter() {
     searchTimeout.current = setTimeout(() => {
       setFilterGenre("");
       setSortBy("");
-      searchMovies(query, currentPage)
+      searchMovies(query, currentPage);
     }, 500);
 
     //no timeout runs in the background after the component disappears
@@ -35,8 +44,8 @@ function MovieFilter() {
   //"mode-browse" is activated when the user uses the sort & filter function
   useEffect(() => {
     if (mode !== "browse") return;
-    filterMovies(currentPage, filterGenre)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    filterMovies(currentPage, filterGenre);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage, mode, filterGenre, filterMovies]);
 
   //Resets all filters and switches back to browse mode.
@@ -59,7 +68,7 @@ function MovieFilter() {
     if (sortBy === "releaseDate")
       return new Date(a.release_date) - new Date(b.release_date);
     if (sortBy === "popularity") return b.vote_average - a.vote_average;
-    
+
     return 0;
   });
 
@@ -77,7 +86,7 @@ function MovieFilter() {
               value={filterGenre}
               onChange={(e) => {
                 setFilterGenre(e.target.value);
-                setCurrentPage(1)
+                setCurrentPage(1);
               }}
             >
               {/*value is linked to a genre in the TMDB API.  */}
@@ -118,7 +127,9 @@ function MovieFilter() {
         {mode === "search" && (
           <p id="clear-text">
             Search results for "{query}" –{" "}
-            <button id="clear-btn" onClick={handleReset}>Clear</button>
+            <button id="clear-btn" onClick={handleReset}>
+              Clear
+            </button>
           </p>
         )}
       </div>

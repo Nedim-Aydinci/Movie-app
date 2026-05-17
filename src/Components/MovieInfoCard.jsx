@@ -13,6 +13,7 @@ export default function MovieInfoCard({ movie, credits }) {
   const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
   const backdropPath = `${IMAGE_BASE_URL}${movie.backdrop_path}`;
 
+  //Get director and cast
   const director = credits.crew.find((person) => person.job === "Director");
   const cast = credits.cast.slice(0, 5);
 
@@ -28,7 +29,8 @@ export default function MovieInfoCard({ movie, credits }) {
       <div className="movie-info">
         <h1>{movie.title}</h1>
 
-       <p className="genres">
+        <p className="genres">
+          {/*gets the first two genres*/}
           {movie.genres.slice(0, 2).map((genre) => (
             <span key={genre.id} className="tag">
               {genre.name}
@@ -51,6 +53,7 @@ export default function MovieInfoCard({ movie, credits }) {
         <p>Actors:</p>
 
         <div className="movie-cast">
+          {/*map through the first 5 actors*/}
           {cast.map((actor) => (
             <span key={actor.id} className="tag">
               {actor.name}

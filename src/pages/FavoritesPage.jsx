@@ -5,6 +5,7 @@ import { useMovieFetch } from "../Stores/useMovieFetch.js";
 export default function FavoritesPage() {
   const { favoriteMovies, fetchFavorites, isLoading, error } = useMovieFetch();
 
+  //everytime the component mounts, it will run the fetchFavorites function
   useEffect(() => {
     fetchFavorites();
   }, [fetchFavorites]);
@@ -20,7 +21,5 @@ export default function FavoritesPage() {
     );
   }
 
-  return (
-    <MovieWrapper movies={favoriteMovies}  />
-  );
+  return <MovieWrapper movies={favoriteMovies} />;
 }

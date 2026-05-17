@@ -40,7 +40,7 @@
 }
 
 #clear-text {
-  color: var(--text-muted)
+  color: var(--text-muted);
 }
 
 #clear-btn {
