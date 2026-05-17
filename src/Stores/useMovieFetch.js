@@ -152,11 +152,10 @@ export const useMovieFetch = create((set, get) => ({
     }
   },
   movieTrailers: async (movieId) => {
-
     const currentTrailer = get().selectedTrailer?.id === movieId;
 
     if (currentTrailer?.id === movieId) return;
-      
+
     set({ isLoading: true, error: null });
     try {
       const trailers = await fetchMovieTrailers(movieId);

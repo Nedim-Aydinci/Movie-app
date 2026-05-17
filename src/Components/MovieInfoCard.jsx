@@ -28,7 +28,7 @@ export default function MovieInfoCard({ movie, credits }) {
       <div className="movie-info">
         <h1>{movie.title}</h1>
 
-       <p className="genres">
+        <p className="genres">
           {movie.genres.slice(0, 2).map((genre) => (
             <span key={genre.id} className="tag">
               {genre.name}

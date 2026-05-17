@@ -20,7 +20,5 @@ export default function FavoritesPage() {
     );
   }
 
-  return (
-    <MovieWrapper movies={favoriteMovies}  />
-  );
+  return <MovieWrapper movies={favoriteMovies} />;
 }

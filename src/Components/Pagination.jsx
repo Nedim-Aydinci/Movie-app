@@ -5,8 +5,6 @@ import MovieWrapper from "./MovieWrapper";
 //adjustment of page amount
 const WINDOW_SIZE = 10;
 
-
-
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   const getPageNumbers = () => {
     //window calculation

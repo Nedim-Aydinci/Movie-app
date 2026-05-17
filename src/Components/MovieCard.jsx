@@ -8,9 +8,9 @@ import { useMovieFetch } from "../Stores/useMovieFetch";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 export default function MovieCard({ movie, onClick = undefined }) {
-  const { toggleFavorite, favoriteMovies } = useMovieFetch()
-  
-  const isFavorite = favoriteMovies.some(m => m.id === movie.id);
+  const { toggleFavorite, favoriteMovies } = useMovieFetch();
+
+  const isFavorite = favoriteMovies.some((m) => m.id === movie.id);
 
   const posterPath = `${IMAGE_BASE_URL}${movie.poster_path}`;
 
@@ -18,7 +18,7 @@ export default function MovieCard({ movie, onClick = undefined }) {
     //when favorite is clicked it only clicks on favorite and not the whole card
     e.stopPropagation();
     e.preventDefault(); //prevent the page from reloading
-    toggleFavorite(movie)
+    toggleFavorite(movie);
   };
 
   return (
