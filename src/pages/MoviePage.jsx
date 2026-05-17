@@ -11,6 +11,7 @@ export default function MoviePage() {
   const { id } = useParams(); //Get id from url
   const { selectedMovie, movieById, isLoading } = useMovieFetch();
 
+  //Fetch movie when id changes and when movieById changes
   useEffect(() => {
     movieById(id);
   }, [id, movieById]);

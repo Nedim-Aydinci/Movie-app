@@ -7,6 +7,7 @@ import { useMovieFetch } from "../Stores/useMovieFetch";
 export default function RandomMovie() {
   const { randomMovie, randomMovies, isLoading, error } = useMovieFetch();
 
+  //when the component mounts, it will run the randomMovies function, re-rendering the component
   useEffect(() => {
     randomMovies();
   }, [randomMovies]);

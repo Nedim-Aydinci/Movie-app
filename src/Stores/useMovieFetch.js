@@ -22,8 +22,8 @@ export const useMovieFetch = create((set, get) => ({
   trailerKey: "",
   favoriteMovies: [],
 
-  setCurrentPage: (page) => set({ currentPage: page }),
-
+  setCurrentPage: (page) => set({ currentPage: page }), //for pagination component
+  // ============================================================
   searchMovies: async (query, page = 1) => {
     set({ isLoading: true, error: null, currentQuery: query });
     try {
@@ -38,7 +38,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   filterMovies: async (page = 1, genre = "") => {
     set({ isLoading: true, error: null, currentPage: page });
     try {
@@ -52,7 +52,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   randomMovies: async () => {
     set({ isLoading: true, error: null, randomMovie: null });
     try {
@@ -62,7 +62,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   movieById: async (id) => {
     set({ isLoading: true, error: null });
     try {
@@ -72,7 +72,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   fetchFavorites: async () => {
     const saved = localStorage.getItem("favorites");
     if (!saved) {
@@ -97,7 +97,7 @@ export const useMovieFetch = create((set, get) => ({
       });
     }
   },
-
+  // ============================================================
   toggleFavorite: (movie) => {
     const saved = localStorage.getItem("favorites");
     let favorites = saved ? JSON.parse(saved) : [];
@@ -117,7 +117,7 @@ export const useMovieFetch = create((set, get) => ({
         : [...state.favoriteMovies, movie],
     }));
   },
-
+  // ============================================================
   removeFavorite: (movieId) => {
     const saved = localStorage.getItem("favorites");
     if (saved) {
@@ -132,7 +132,7 @@ export const useMovieFetch = create((set, get) => ({
       ),
     }));
   },
-
+  // ============================================================
   randomTrailer: async () => {
     set({ isLoading: true, error: null });
     try {
@@ -151,6 +151,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
+  // ============================================================
   movieTrailers: async (movieId) => {
     const currentTrailer = get().selectedTrailer?.id === movieId;
 
@@ -171,7 +172,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   popularMovies: async () => {
     set({ isLoading: true, error: null });
     try {
@@ -181,7 +182,7 @@ export const useMovieFetch = create((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-
+  // ============================================================
   clearSelected: () =>
     set({
       selectedMovie: null,

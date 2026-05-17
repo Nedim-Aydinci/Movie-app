@@ -7,6 +7,7 @@ const RandomTrailer = () => {
   const { currentPage, selectedTrailer, randomTrailer, isLoading, error } =
     useMovieFetch();
 
+  //everytime the currentPage changes, it will run the randomTrailer function
   useEffect(() => {
     randomTrailer();
   }, [currentPage]);

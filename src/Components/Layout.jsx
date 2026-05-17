@@ -7,6 +7,7 @@ export default function Layout({ onReset, onSearch }) {
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
+      {/*calls the reset function from App.jsx if it's passed in as a prop*/}
       <Navbar onReset={onReset} onSearch={onSearch} />
       <main style={{ flex: 1 }}>
         <Outlet />

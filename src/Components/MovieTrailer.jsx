@@ -5,14 +5,16 @@ import "../Styles/MovieTrailer.css";
 export default function MovieTrailer({ movieId }) {
   const { selectedTrailer, movieTrailers } = useMovieFetch();
 
+  //Fetch trailer when movieId changes
   useEffect(() => {
     if (movieId && selectedTrailer?.id !== movieId) {
       movieTrailers(movieId);
     }
-  }, [movieId]);
+  }, [movieId]); //change trailer when movieId changes
 
   return (
     <div className="movie-trailer">
+      {/*if trailer is available show it*/}
       {selectedTrailer?.trailerKey ? (
         <div className="movie-trailer-container">
           <iframe
