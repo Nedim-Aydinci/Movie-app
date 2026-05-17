@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import MovieInfoCard from "../Components/MovieInfoCard";
 import { useMovieFetch } from "../Stores/useMovieFetch";
 import NotFound from "./NotFoundPage";
+import MovieTrailer from "../Components/MovieTrailer";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -20,6 +21,7 @@ export default function MoviePage() {
   return (
     <>
       <MovieInfoCard movie={selectedMovie} credits={selectedMovie.credits} />
+      <MovieTrailer movieId={id} />
     </>
   );
 }

@@ -1,0 +1,36 @@
+.movie-trailer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 20rem;
+}
+
+.movie-trailer-container {
+    width: 100%;
+    height: 40rem;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.movie-trailer-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none
+}
+
+@media (max-width: 1600px) {
+    .movie-trailer {
+        padding: 2rem 10rem;
+        height: 30rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .movie-trailer {
+        padding: 2rem 5rem;
+        height: 20rem;
+    }
+}

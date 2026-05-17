@@ -2,13 +2,14 @@ import { create } from "zustand";
 import {
   fetchRandomMovie,
   fetchRandomTrailer,
+  fetchMovieTrailers,
   fetchMoviesForFilter,
   fetchMovieById,
   fetchPopularMovies,
   fetchSearchMovies,
 } from "../Api/api";
 
-export const useMovieFetch = create((set) => ({
+export const useMovieFetch = create((set, get) => ({
   movies: [],
   totalPages: 1,
   currentPage: 1,
@@ -21,7 +22,7 @@ export const useMovieFetch = create((set) => ({
   trailerKey: "",
   favoriteMovies: [],
 
-  setCurrentPage: (page) => set({currentPage: page}),
+  setCurrentPage: (page) => set({ currentPage: page }),
 
   searchMovies: async (query, page = 1) => {
     set({ isLoading: true, error: null, currentQuery: query });
@@ -39,7 +40,7 @@ export const useMovieFetch = create((set) => ({
   },
 
   filterMovies: async (page = 1, genre = "") => {
-    set({ isLoading: true, error: null, currentPage: page});
+    set({ isLoading: true, error: null, currentPage: page });
     try {
       const data = await fetchMoviesForFilter(page, genre);
       set({
@@ -73,44 +74,49 @@ export const useMovieFetch = create((set) => ({
   },
 
   fetchFavorites: async () => {
-    const saved = localStorage.getItem("favorites")
+    const saved = localStorage.getItem("favorites");
     if (!saved) {
-      set({ favoriteMovies: [], isLoading: false })
+      set({ favoriteMovies: [], isLoading: false });
       return;
     }
-    const ids = JSON.parse(saved)
+    const ids = JSON.parse(saved);
     if (ids.length === 0) {
-      set({ favoriteMovies: [], isLoading: false })
-      return
+      set({ favoriteMovies: [], isLoading: false });
+      return;
     }
-    set({ isLoading: true, error: null })
+    set({ isLoading: true, error: null });
     try {
-      const movies = await Promise.all(ids.map((id) => fetchMovieById(Number(id))))
-      set({favoriteMovies: movies, isLoading: false })
+      const movies = await Promise.all(
+        ids.map((id) => fetchMovieById(Number(id))),
+      );
+      set({ favoriteMovies: movies, isLoading: false });
     } catch (err) {
-      set({ error: "Kunde inte hämta favoriter: " + err.message, isLoading: false })
+      set({
+        error: "Kunde inte hämta favoriter: " + err.message,
+        isLoading: false,
+      });
     }
   },
 
   toggleFavorite: (movie) => {
-  const saved = localStorage.getItem("favorites");
-  let favorites = saved ? JSON.parse(saved) : [];
-  const isFav = favorites.includes(movie.id);
+    const saved = localStorage.getItem("favorites");
+    let favorites = saved ? JSON.parse(saved) : [];
+    const isFav = favorites.includes(movie.id);
 
-  if (isFav) {
-    favorites = favorites.filter((id) => id !== movie.id);
-  } else {
-    favorites.push(movie.id);
-  }
+    if (isFav) {
+      favorites = favorites.filter((id) => id !== movie.id);
+    } else {
+      favorites.push(movie.id);
+    }
 
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  
-  set((state) => ({
-    favoriteMovies: isFav 
-      ? state.favoriteMovies.filter(m => m.id !== movie.id)
-      : [...state.favoriteMovies, movie] 
-  }));
-},
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    set((state) => ({
+      favoriteMovies: isFav
+        ? state.favoriteMovies.filter((m) => m.id !== movie.id)
+        : [...state.favoriteMovies, movie],
+    }));
+  },
 
   removeFavorite: (movieId) => {
     const saved = localStorage.getItem("favorites");
@@ -121,7 +127,9 @@ export const useMovieFetch = create((set) => ({
     }
 
     set((state) => ({
-      favoriteMovies: state.favoriteMovies.filter((movie) => movie.id !== movieId),
+      favoriteMovies: state.favoriteMovies.filter(
+        (movie) => movie.id !== movieId,
+      ),
     }));
   },
 
@@ -130,11 +138,36 @@ export const useMovieFetch = create((set) => ({
     try {
       const movieData = await fetchRandomTrailer();
 
-      const trailer = movieData.videos?.results?.find(
-      (v) => v.type === "Trailer" && v.site === "YouTube"
-    ) || movieData.videos?.results[0];
+      const trailer =
+        movieData.videos?.results?.find(
+          (v) => v.type === "Trailer" && v.site === "YouTube",
+        ) || movieData.videos?.results[0];
 
-      set({ selectedTrailer: { ...movieData, trailerKey: trailer?.key}, isLoading: false });
+      set({
+        selectedTrailer: { ...movieData, trailerKey: trailer?.key },
+        isLoading: false,
+      });
+    } catch (err) {
+      set({ error: err.message, isLoading: false });
+    }
+  },
+  movieTrailers: async (movieId) => {
+
+    const currentTrailer = get().selectedTrailer?.id === movieId;
+
+    if (currentTrailer?.id === movieId) return;
+      
+    set({ isLoading: true, error: null });
+    try {
+      const trailers = await fetchMovieTrailers(movieId);
+
+      const trailer =
+        trailers?.find((v) => v.type === "Trailer" && v.site === "YouTube") ||
+        trailers[0];
+      set({
+        selectedTrailer: { trailerKey: trailer?.key, id: movieId },
+        isLoading: false,
+      });
     } catch (err) {
       set({ error: err.message, isLoading: false });
     }
